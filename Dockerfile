@@ -14,7 +14,6 @@ RUN pip install -r requirements.txt
 
 COPY ./migrations.sh /code/
 RUN ["chmod", "+x", "/code/migrations.sh"]
-RUN ["chmod", "+x", "/code/migrations.sh"]
 
 
 COPY . /code/
