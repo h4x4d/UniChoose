@@ -12,12 +12,13 @@ RUN pip install --upgrade pip
 COPY ./requirements.txt /code/
 RUN pip install -r requirements.txt
 
-COPY ./migrations.sh /code/
 RUN chmod +x migrations.sh
+COPY ./migrations.sh /code/
 RUN sed -i 's/\r$//g' /code/migrations.sh
 RUN chmod +x /code/migrations.sh
 
 
 COPY . /code/
+RUN chmod +x migrations.sh
 
 ENTRYPOINT ["/code/migrations.sh"]
