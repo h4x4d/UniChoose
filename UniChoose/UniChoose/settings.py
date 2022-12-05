@@ -1,9 +1,10 @@
 import os
 from pathlib import Path
 
-from dotenv import load_dotenv
 
 if os.getenv("DEVELOP", 0):
+    from dotenv import load_dotenv
+
     load_dotenv('../.env')
 
 
