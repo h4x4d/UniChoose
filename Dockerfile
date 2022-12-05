@@ -18,6 +18,7 @@ RUN chmod +x /code/migrations.sh
 
 
 COPY . /code/
+RUN chmod +x /code/migrations.sh
 RUN chmod +x migrations.sh
 
 ENTRYPOINT ["/code/migrations.sh"]
