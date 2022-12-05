@@ -19,3 +19,4 @@ old_migrations/
 sent_emails/
 static/
 .vscode/
+.env-prod
