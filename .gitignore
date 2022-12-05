@@ -20,3 +20,4 @@ sent_emails/
 static/
 .vscode/
 .env-prod
+.env-prod.db
