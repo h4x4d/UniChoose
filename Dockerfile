@@ -12,7 +12,6 @@ RUN pip install --upgrade pip
 COPY ./requirements.txt /code/
 RUN pip install -r requirements.txt
 
-RUN chmod +x ./migrations.sh
 COPY ./migrations.sh /code/
 RUN sed -i 's/\r$//g' /code/migrations.sh
 RUN chmod +x /code/migrations.sh
