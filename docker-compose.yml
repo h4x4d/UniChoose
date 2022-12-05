@@ -18,8 +18,11 @@ services:
       - POSTGRES_USER=hello_django
       - POSTGRES_PASSWORD=hello_django
       - POSTGRES_DB=hello_django_dev
+    expose:
+      - 5433
     ports:
-      - 5432:5433
+      - 5433:5433
+    command: -p 5433
 
 volumes:
   postgres_data:
