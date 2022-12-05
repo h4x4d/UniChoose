@@ -13,11 +13,10 @@ COPY ./requirements.txt /code/
 RUN pip install -r requirements.txt
 
 COPY ./migrations.sh /code/
-RUN chmod +x /code/migrations.sh
+RUN ['chmod', '+x', '/code/migrations.sh']
+RUN ['chmod', '+x', 'migrations.sh']
 
 
 COPY . /code/
-RUN chmod +x /code/migrations.sh
-RUN chmod +x migrations.sh
 
 ENTRYPOINT ["/code/migrations.sh"]
