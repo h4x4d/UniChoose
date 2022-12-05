@@ -19,7 +19,7 @@ services:
       - POSTGRES_PASSWORD=hello_django
       - POSTGRES_DB=hello_django_dev
     ports:
-      - 5432:5432
+      - 5432:5433
 
 volumes:
   postgres_data:
