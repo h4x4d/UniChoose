@@ -13,7 +13,6 @@ COPY ./requirements.txt /code/
 RUN pip install -r requirements.txt
 
 COPY ./migrations.sh /code/
-RUN sed -i 's/\r$//g' /code/migrations.sh
 RUN chmod +x /code/migrations.sh
 
 
