@@ -1,13 +1,19 @@
 services:
+  nginx:
+    build:
+    ports:
+      - 1337:80
+    depends_on:
+      - web
   web:
     build: .
-    command: python UniChoose/manage.py runserver 0.0.0.0:8000
+    command: gunicorn UniChoose.wsgi:application --bind 0.0.0.0:8000
     volumes:
       - .:/code
-    ports:
-      - 8000:8000
+    expose:
+      - 8000
     env_file:
-      - ./.env
+      - .env-prod
     depends_on:
       - db
   db:
@@ -15,7 +21,7 @@ services:
     volumes:
       - postgres_data:/var/lib/postgresql/data/
     env_file:
-      - ./.env.prod.db
+      - .env-prod.db
     expose:
       - 5433
     ports:
