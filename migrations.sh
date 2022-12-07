@@ -8,6 +8,6 @@ done
 
 echo "PostgreSQL started"
 
-python manage.py migrate
+python UniChoose/manage.py migrate
 
 exec "$@"
