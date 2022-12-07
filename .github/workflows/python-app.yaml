@@ -23,13 +23,12 @@ jobs:
         with:
           python-version: "3.10"
       - name: Install dependencies
-        run: |
-          python -m pip install --upgrade pip
-          if [ -f requirements-dev.txt ]; then pip install -r requirements-dev.txt; fi
+        uses: abatilo/actions-poetry@v2
+        with:
+          poetry-version: 1.2.2
 
       - name: Copy .env file
         run: |
-          cd UniChoose
           cp .env-example .env
 
       - name: Lint with flake8
