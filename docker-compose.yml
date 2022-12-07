@@ -7,7 +7,7 @@ services:
       - web
   web:
     build: .
-    command: gunicorn UniChoose.UniChoose.wsgi:application --bind 0.0.0.0:8000
+    command: bash -c "cd UniChoose && gunicorn UniChoose.wsgi:application --bind 0.0.0.0:8000"
     volumes:
       - .:/code
     ports:
