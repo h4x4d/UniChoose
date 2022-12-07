@@ -1,0 +1,36 @@
+services:
+  nginx:
+    build: ./nginx
+    expose:
+      - 8080
+    ports:
+      - 80:8080
+    depends_on:
+      - web
+  web:
+    build: .
+    command: bash -c "cd UniChoose && gunicorn UniChoose.wsgi:application --bind 0.0.0.0:8000"
+    volumes:
+      - .:/code
+    expose:
+      - 8000
+    ports:
+      - 8000:8000
+    env_file:
+      - .env-prod
+    depends_on:
+      - db
+  db:
+    image: postgres:14.1-alpine
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    env_file:
+      - .env-prod.db
+    expose:
+      - 5433
+    ports:
+      - 5433:5433
+    command: -p 5433
+
+volumes:
+  postgres_data:
