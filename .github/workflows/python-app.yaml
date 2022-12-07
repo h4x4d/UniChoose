@@ -1,0 +1,42 @@
+name: Python application
+
+on:
+  push:
+    branches:
+      - '**'
+  pull_request:
+    branches:
+      - '**'
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up Python 3.10
+        uses: actions/setup-python@v3
+        with:
+          python-version: "3.10"
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          if [ -f requirements-dev.txt ]; then pip install -r requirements-dev.txt; fi
+
+      - name: Copy .env file
+        run: |
+          cd UniChoose
+          cp .env-example .env
+
+      - name: Lint with flake8
+        run: |
+          flake8 . --count --show-source --statistics
+
+      - name: Test with unittest
+        run: |
+          cd UniChoose
+          python manage.py test
