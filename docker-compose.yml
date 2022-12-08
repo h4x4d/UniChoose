@@ -7,6 +7,7 @@ services:
       - 80:8080
     volumes:
       - static_volume:/code/UniChoose/static
+      - media_volume:/home/app/web/media
     depends_on:
       - web
   web:
@@ -15,6 +16,7 @@ services:
     volumes:
       - .:/code
       - static_volume:/code/UniChoose/static
+      - media_volume:/home/app/web/media
     expose:
       - 8000
     ports:
@@ -38,3 +40,4 @@ services:
 volumes:
   postgres_data:
   static_volume:
+  media_volume:
