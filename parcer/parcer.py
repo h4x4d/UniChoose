@@ -11,6 +11,7 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 from webdriver_manager.chrome import ChromeDriverManager
 
+# this is for tabirurient.ru specifically
 driver = webdriver.Chrome(ChromeDriverManager().install())
 for i in vuz_links:
     vuz_dict = {}
@@ -37,7 +38,6 @@ for i in vuz_links:
     url = i[:-5] + 'proxodnoi'
     driver.get(url)
     time.sleep(1)
-    # .find_element(By.TAG_NAME, 'center')
     try:
         show_more_button = driver.find_element(By.CSS_SELECTOR, 'div.mobpadd20.morediv').click()
         time.sleep(1)
@@ -63,7 +63,7 @@ for i in vuz_links:
             for subj_name in subjects:
                 subj_list.append(subj_name.find_all('tr')[2].find('b').text.strip())
             print(podrazdelenie, profil, prohodnoy, level, subj_list)
-            podrazd_result.append({'name': podrazdelenie, 'profile': profil, 'pass_mark': (prohodnoy if not prohodnoy.lower() == 'new' and not prohodnoy.lower() == 'нет' else 'Нет'), 'subjects': subj_list})
+            podrazd_result.append({'name': podrazdelenie, 'profile': profil, 'pass_mark': (prohodnoy if not prohodnoy.lower() == 'new' and not prohodnoy.lower() == 'нет' else 'Нет'), 'ege_subjects': subj_list})
         napr_result.append({'name': napravlenie, 'level': level, 'podrazdelenie': podrazd_result})
     vuz_dict['napravlenie'] = napr_result
     data.append(vuz_dict)
