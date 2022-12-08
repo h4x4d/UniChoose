@@ -5,6 +5,8 @@ services:
       - 8080
     ports:
       - 80:8080
+    volumes:
+      - static_volume:/code/UniChoose/static
     depends_on:
       - web
   web:
