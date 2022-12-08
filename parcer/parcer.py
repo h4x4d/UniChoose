@@ -12,11 +12,11 @@ from selenium.webdriver.common.by import By
 from webdriver_manager.chrome import ChromeDriverManager
 
 driver = webdriver.Chrome(ChromeDriverManager().install())
-for i in vuz_links[:10]:
+for i in vuz_links:
     vuz_dict = {}
     url = i
     driver.get(i)
-    time.sleep(2)
+    time.sleep(1)
     html = driver.page_source
     soup = BeautifulSoup(html, "html.parser")
     vuz_name = soup.find('h2', {'itemprop': 'name'}).text
@@ -26,7 +26,7 @@ for i in vuz_links[:10]:
         vuz_dict['description'] = soup.select('html > body > div > div.maincontent > div.m270 > div.content > div.p40.pm40 > span.font2')[0].text
     except Exception:
         pass
-    vuz_dict['city'] = soup.find('table', {'itemtype': 'https://schema.org/CollegeOrUniversity'}).find('table', {'style': 'width:auto; margin: 0 auto; margin-top:10px; text-align:center;'}).find('b', {'class': 'font1'}).text
+    vuz_dict['region'] = soup.find('table', {'itemtype': 'https://schema.org/CollegeOrUniversity'}).find('table', {'style': 'width:auto; margin: 0 auto; margin-top:10px; text-align:center;'}).find('b', {'class': 'font1'}).text
     vuz_dict['rating'] = ('0.0', 'Нет оценок')
     try:
         rating_td = soup.find('td', {'class': 'ocenka'})
@@ -36,7 +36,7 @@ for i in vuz_links[:10]:
     # баллы
     url = i[:-5] + 'proxodnoi'
     driver.get(url)
-    time.sleep(2)
+    time.sleep(1)
     # .find_element(By.TAG_NAME, 'center')
     try:
         show_more_button = driver.find_element(By.CSS_SELECTOR, 'div.mobpadd20.morediv').click()
@@ -63,12 +63,13 @@ for i in vuz_links[:10]:
             for subj_name in subjects:
                 subj_list.append(subj_name.find_all('tr')[2].find('b').text.strip())
             print(podrazdelenie, profil, prohodnoy, level, subj_list)
-            podrazd_result.append({'name': podrazdelenie, 'profil': profil, 'prohodnoy': prohodnoy, 'subjects': subj_list})
-        napr_result.append({'name': napravlenie, 'level': level, 'podrazd': podrazd_result})
-    vuz_dict['napr'] = napr_result
+            podrazd_result.append({'name': podrazdelenie, 'profile': profil, 'pass_mark': (prohodnoy if not prohodnoy.lower() == 'new' and not prohodnoy.lower() == 'нет' else 'Нет'), 'subjects': subj_list})
+        napr_result.append({'name': napravlenie, 'level': level, 'podrazdelenie': podrazd_result})
+    vuz_dict['napravlenie'] = napr_result
     data.append(vuz_dict)
 file = open('data.json', 'w', encoding='utf-8')
 json.dump(data, file, ensure_ascii=False, indent='    ')
+
 
 # [
 #     {
