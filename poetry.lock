@@ -123,21 +123,6 @@ eradicate = ">=2.0,<3.0"
 flake8 = ">=3.5,<6"
 
 [[package]]
-name = "flake8-isort"
-version = "5.0.3"
-description = "flake8 plugin that integrates isort ."
-category = "dev"
-optional = false
-python-versions = ">=3.7"
-
-[package.dependencies]
-flake8 = "*"
-isort = ">=4.3.5,<6"
-
-[package.extras]
-test = ["pytest"]
-
-[[package]]
 name = "flake8-print"
 version = "5.0.0"
 description = "print statement checker plugin for flake8"
@@ -296,7 +281,7 @@ python-versions = ">=3.5"
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.10"
-content-hash = "27463784e19e9337be51aa59f3a1e4088a52c6d31401a8c0e9ad77ef78fc04d0"
+content-hash = "c6c971fd7e8643bc5757c70711fd6ea9f4f1c889c620b2e175dbf24aa59181cd"
 
 [metadata.files]
 asgiref = [
@@ -337,10 +322,6 @@ flake8-comprehensions = [
 flake8-eradicate = [
     {file = "flake8-eradicate-1.4.0.tar.gz", hash = "sha256:3088cfd6717d1c9c6c3ac45ef2e5f5b6c7267f7504d5a74b781500e95cb9c7e1"},
     {file = "flake8_eradicate-1.4.0-py3-none-any.whl", hash = "sha256:e3bbd0871be358e908053c1ab728903c114f062ba596b4d40c852fd18f473d56"},
-]
-flake8-isort = [
-    {file = "flake8-isort-5.0.3.tar.gz", hash = "sha256:0951398c343c67f4933407adbbfb495d4df7c038650c5d05753a006efcfeb390"},
-    {file = "flake8_isort-5.0.3-py3-none-any.whl", hash = "sha256:8c4ab431d87780d0c8336e9614e50ef11201bc848ef64ca017532dec39d4bf49"},
 ]
 flake8-print = [
     {file = "flake8-print-5.0.0.tar.gz", hash = "sha256:76915a2a389cc1c0879636c219eb909c38501d3a43cc8dae542081c9ba48bdf9"},

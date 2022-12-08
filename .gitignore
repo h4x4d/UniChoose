@@ -17,7 +17,7 @@ change_quotes.py
 old_migrations/
 /intensive_django/media/
 sent_emails/
-static/
+static-dev/
 .vscode/
 .env-prod
 .env-prod.db
