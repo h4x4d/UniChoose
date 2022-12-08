@@ -5,6 +5,9 @@ services:
       - 8080
     ports:
       - 80:8080
+    volumes:
+      - static_volume:/code/UniChoose/static
+      - media_volume:/home/app/web/media
     depends_on:
       - web
   web:
@@ -12,6 +15,8 @@ services:
     command: bash -c "cd UniChoose && gunicorn UniChoose.wsgi:application --bind 0.0.0.0:8000"
     volumes:
       - .:/code
+      - static_volume:/code/UniChoose/static
+      - media_volume:/home/app/web/media
     expose:
       - 8000
     ports:
@@ -34,3 +39,5 @@ services:
 
 volumes:
   postgres_data:
+  static_volume:
+  media_volume:
