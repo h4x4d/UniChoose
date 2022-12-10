@@ -1,5 +1,6 @@
-from django.views.generic import ListView
 from django.shortcuts import render
+from django.views.generic import ListView
+
 from users.models import Account
 
 # TODO: rewrite view according to Alexey templates

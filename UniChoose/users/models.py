@@ -1,7 +1,8 @@
 from django.contrib.auth.models import AbstractUser
 from django.db import models
-from universities.models import University
+
 from departments.models import Department
+from universities.models import University
 
 
 class Account(AbstractUser):
