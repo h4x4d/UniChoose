@@ -4,7 +4,6 @@ from pathlib import Path
 if os.getenv('DEVELOP', 0):
 if os.getenv('DEVELOP', 1):
     from dotenv import load_dotenv
-
     load_dotenv('../.env')
 
 BASE_DIR = Path(__file__).resolve().parent.parent
