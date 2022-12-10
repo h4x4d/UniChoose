@@ -25,6 +25,7 @@ INSTALLED_APPS = [
     'departments.apps.DepartmentsConfig',
     'about.apps.AboutConfig',
     'users.apps.UsersConfig',
+    'universities.apps.UniversitiesConfig',
 ]
 
 MIDDLEWARE = [
@@ -102,6 +103,8 @@ STATIC_ROOT = BASE_DIR / 'static'
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
+
+AUTH_USER_MODEL = 'users.Account'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
