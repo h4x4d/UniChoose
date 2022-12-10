@@ -1,10 +1,10 @@
-from core.models import CoreNameModel
 from django.core.validators import MaxValueValidator
 from django.db import models
+
+from core.models import CoreNameModel
+from departments.validators import validate_department_classification_format
 from universities.models import University
 from users.models import Account
-
-from departments.validators import validate_department_classification_format
 
 
 class Department(CoreNameModel):
