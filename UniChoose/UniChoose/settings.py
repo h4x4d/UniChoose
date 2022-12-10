@@ -2,6 +2,7 @@ import os
 from pathlib import Path
 
 if os.getenv('DEVELOP', 0):
+if os.getenv('DEVELOP', 1):
     from dotenv import load_dotenv
 
     load_dotenv('../.env')
@@ -42,7 +43,9 @@ ROOT_URLCONF = 'UniChoose.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [
+            BASE_DIR / 'templates',
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -98,7 +101,10 @@ USE_L10N = True
 USE_TZ = True
 
 STATIC_URL = '/static/'
-STATIC_ROOT = BASE_DIR / 'static'
+STATICFILES_DIRS = [
+    BASE_DIR / 'static',
+]
+STATIC_ROOT = BASE_DIR / '/static'
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
