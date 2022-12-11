@@ -19,4 +19,4 @@ class LikedDepartments(ListView):
             'liked_departments': self.get_queryset(request.user),
         }
 
-        render(request, self.template_name, context)
+        return render(request, self.template_name, context)

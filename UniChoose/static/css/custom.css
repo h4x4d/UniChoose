@@ -12,7 +12,7 @@ footer{
     width:70%;
 }
 main{
-    height: 75vh;
+    min-height: 75vh;
     display: flex;
     align-items: center;
 }
@@ -138,3 +138,33 @@ main{
     color: #242141;
     font-weight: bold;
  }
+
+/* department card */
+.dep-card{
+    border: #242141 2px solid;
+    border-radius: 10px;
+    max-width: 500px;
+}
+.dep-card-header{
+    padding:10px;
+    background: #242141;
+    color: white;
+    border-radius: 7px;
+    border-bottom: #242141 2px solid;
+    transition: background 0.4s, height 0.4s;
+}
+.dep-card-title{
+    font-weight: bold;
+    font-size: 18px;
+}
+.dep-card-subtitle{
+    font-size: 14px;
+}
+.dep-card-main{
+    display:flex;
+    padding: 10px;
+}
+.dep-card-score{
+    margin-left:10px;
+    display:column;
+}
