@@ -1,6 +1,7 @@
-from django.shortcuts import render
+from django.views.generic import TemplateView
+
+# TODO: rewrite view according to Alexey templates
 
 
-def home(request):
-    template = 'homepage/index.html'
-    return render(request, template)
+class HomepageView(TemplateView):
+    template_name = 'homepage/index.html'
