@@ -10,6 +10,8 @@ class Account(AbstractUser):
         University, verbose_name='liked universities')
     liked_dpts = models.ManyToManyField(
         Department, verbose_name='liked departments')
+    ege_marks = models.JSONField(verbose_name='ege marks',
+                                 null=True, blank=False)
 
     def __str__(self):
         return self.username

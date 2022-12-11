@@ -1,6 +1,8 @@
 import os
 from pathlib import Path
 
+from django.urls import reverse_lazy
+
 if os.getenv('DEVELOP', 0):
     from dotenv import load_dotenv
 
@@ -106,7 +108,9 @@ STATIC_ROOT = BASE_DIR / 'static'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
+LOGIN_URL = reverse_lazy('auth:login')
 AUTH_USER_MODEL = 'users.Account'
+LOGIN_REDIRECT_URL = ''
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 

@@ -19,4 +19,4 @@ class LikedUniversities(ListView):
             'liked_universities': self.get_queryset(request.user),
         }
 
-        render(request, self.template_name, context)
+        return render(request, self.template_name, context)
