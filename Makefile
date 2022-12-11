@@ -30,6 +30,10 @@ pip-run:
 update:
 	git pull
 
+.PHONY: down
+down:
+	docker compose down -v
+
 .PHONY: up
-up: update
+up: update down
 	docker compose up -d --build
