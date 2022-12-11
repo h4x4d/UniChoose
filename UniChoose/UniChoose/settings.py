@@ -1,9 +1,8 @@
 import os
 from pathlib import Path
 
-if os.getenv('DEVELOP', 0):
+if os.getenv('DEVELOP', 1):
     from dotenv import load_dotenv
-
     load_dotenv('../.env')
 
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -101,7 +100,10 @@ USE_L10N = True
 USE_TZ = True
 
 STATIC_URL = '/static/'
-STATIC_ROOT = BASE_DIR / 'static'
+STATICFILES_DIRS = [
+    BASE_DIR / 'static',
+]
+STATIC_ROOT = BASE_DIR / '/static'
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
