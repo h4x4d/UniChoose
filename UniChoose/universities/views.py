@@ -6,17 +6,17 @@ from users.models import Account
 # TODO: rewrite view according to Alexey templates
 
 
-class LikedDepartments(ListView):
+class LikedUniversities(ListView):
     # ! Haven't tested this view yet
 
-    template_name = 'departments/index.html'
+    template_name = 'universities/index.html'
 
     def get_queryset(self, account: Account):
-        return account.liked_dpts.all()
+        return account.liked_unis.all()
 
     def get(self, request):
         context = {
-            'liked_departments': self.get_queryset(request.user),
+            'liked_universities': self.get_queryset(request.user),
         }
 
         render(request, self.template_name, context)
