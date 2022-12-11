@@ -16,9 +16,9 @@ class Account(AbstractUser):
 
 
 class AccountDepartmentRelations(models.Model):
-    account = models.OneToOneField(
+    account = models.ForeignKey(
         Account, on_delete=models.CASCADE, related_name='account')
-    department = models.OneToOneField(
+    department = models.ForeignKey(
         Department, on_delete=models.CASCADE, related_name='department')
     strength = models.PositiveSmallIntegerField(
         verbose_name='relation strength')
