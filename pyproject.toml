@@ -27,6 +27,7 @@ flake8-eradicate = "^1.4.0"
 dlint = "^0.13.0"
 flake8-print = "^5.0.0"
 isort = "^5.10.1"
+pre-commit = "^2.20.0"
 
 [build-system]
 requires = ["poetry-core"]
