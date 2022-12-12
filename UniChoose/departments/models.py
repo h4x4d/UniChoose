@@ -25,3 +25,22 @@ class Department(CoreNameModel):
 
     def __str__(self):
         return self.name
+
+
+class WeightedDepartment(models.Model):
+    entry_score = models.IntegerField()
+    vuz_rating = models.DecimalField(
+        verbose_name='average rating',
+        max_digits=3,
+        decimal_places=1,
+        validators=(MaxValueValidator(10.0), ),
+    )
+    edu_level = models.IntegerField()
+    profile = models.IntegerField()
+
+    department = models.OneToOneField(Department,
+                                      on_delete=models.CASCADE,
+                                      related_name='weighted')
+
+    def __str__(self):
+        return f'{self.department.name} weighted'

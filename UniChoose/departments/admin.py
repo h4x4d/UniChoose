@@ -1,5 +1,5 @@
+from departments.models import Department, WeightedDepartment
 from django.contrib import admin
 
-from departments.models import Department
-
 admin.site.register(Department)
+admin.site.register(WeightedDepartment)
