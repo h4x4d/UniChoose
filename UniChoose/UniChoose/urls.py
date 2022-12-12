@@ -7,7 +7,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('auth/', include('django.contrib.auth.urls')),
     # ? path('auth/', include('users.urls')),
-    path('', include('homepage.urls')),     # * app_name = 'homepage'
+    path('', include('homepage.urls')),  # * app_name = 'homepage'
     # * app_name = 'universities'
     path('universities/', include('universities.urls')),
     # * app_name = 'departments'

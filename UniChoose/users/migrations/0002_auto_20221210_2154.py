@@ -17,20 +17,36 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='account',
             name='liked_dpts',
-            field=models.ManyToManyField(to='departments.Department', verbose_name='liked departments'),
+            field=models.ManyToManyField(to='departments.Department',
+                                         verbose_name='liked departments'),
         ),
         migrations.AddField(
             model_name='account',
             name='liked_unis',
-            field=models.ManyToManyField(to='universities.University', verbose_name='liked universities'),
+            field=models.ManyToManyField(to='universities.University',
+                                         verbose_name='liked universities'),
         ),
         migrations.CreateModel(
             name='AccountDepartmentRelations',
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('strength', models.PositiveSmallIntegerField(verbose_name='relation strength')),
-                ('account', models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, related_name='account', to=settings.AUTH_USER_MODEL)),
-                ('department', models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, related_name='department', to='departments.department')),
+                ('id',
+                 models.BigAutoField(auto_created=True,
+                                     primary_key=True,
+                                     serialize=False,
+                                     verbose_name='ID')),
+                ('strength',
+                 models.PositiveSmallIntegerField(
+                     verbose_name='relation strength')),
+                ('account',
+                 models.OneToOneField(
+                     on_delete=django.db.models.deletion.CASCADE,
+                     related_name='account',
+                     to=settings.AUTH_USER_MODEL)),
+                ('department',
+                 models.OneToOneField(
+                     on_delete=django.db.models.deletion.CASCADE,
+                     related_name='department',
+                     to='departments.department')),
             ],
         ),
     ]

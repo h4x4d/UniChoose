@@ -28,6 +28,8 @@ dlint = "^0.13.0"
 flake8-print = "^5.0.0"
 isort = "^5.10.1"
 pre-commit = "^2.20.0"
+yapf = "^0.32.0"
+toml = "^0.10.2"
 
 [build-system]
 requires = ["poetry-core"]

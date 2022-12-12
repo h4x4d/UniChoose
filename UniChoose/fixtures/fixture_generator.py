@@ -26,7 +26,8 @@ def main(source_file, fixture_file):
                 'avg_rating': university['rating'][0],
                 'rating_count': university['rating'][1],
                 'region': university['region'],
-            }})
+            },
+        })
 
         for profile in university['napravlenie']:
             for department in profile['podrazdelenie']:
@@ -45,13 +46,18 @@ def main(source_file, fixture_file):
                         'edu_level': levels_int[profile['level']],
                         'ege_subjects': department['ege_subjects'],
                         'university': university_pk,
-                    }})
+                    },
+                })
                 department_pk += 1
 
-        json.dump(fixture, open(f'initial_fixtures/{fixture_file}_'
-                                f'{university_pk}.json', 'w',
-                                encoding='utf-8'),
-                  ensure_ascii=False, indent=4)
+        json.dump(fixture,
+                  open(
+                      f'initial_fixtures/{fixture_file}_'
+                      f'{university_pk}.json',
+                      'w',
+                      encoding='utf-8'),
+                  ensure_ascii=False,
+                  indent=4)
         fixture = []
 
         university_pk += 1

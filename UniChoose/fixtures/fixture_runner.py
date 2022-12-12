@@ -5,7 +5,7 @@ os.chdir('..')
 
 
 def f(i):
-    os.system(f'python manage.py loaddata ' # noqa
+    os.system(f'python manage.py loaddata '  # noqa
               f'fixtures/initial_fixtures/data_fixture_{i}.json')
 
 
