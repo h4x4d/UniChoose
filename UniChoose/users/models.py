@@ -36,7 +36,6 @@ class AccountDepartmentRelations(models.Model):
         verbose_name='relation strength')
 
 
-
 class Subject(CoreNameModel):
     account = models.ForeignKey(Account,
                                 on_delete=models.CASCADE,
