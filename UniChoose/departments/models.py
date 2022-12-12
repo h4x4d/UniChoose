@@ -21,7 +21,7 @@ class Department(CoreNameModel):
     ege_subjects = models.JSONField(verbose_name='required_ege_subjects')
     university = models.ForeignKey(University,
                                    on_delete=models.CASCADE,
-                                   related_name='university')
+                                   related_name='departments')
 
     def __str__(self):
         return self.name
