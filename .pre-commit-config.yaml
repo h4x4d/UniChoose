@@ -16,3 +16,4 @@ repos:
     rev: '5.0.4'
     hooks:
       - id: flake8
+        additional_dependencies: [ 'flake8-commas', 'flake8-quotes', 'flake8-comprehensions', 'flake8-bugbear', 'flake8-tidy-imports', 'pep8-naming', 'flake8-eradicate', 'dlint', 'flake8-print' ]
