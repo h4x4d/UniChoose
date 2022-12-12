@@ -1,4 +1,12 @@
 [[package]]
+name = "annoy"
+version = "1.17.1"
+description = "Approximate Nearest Neighbors in C++/Python optimized for memory usage and loading/saving to disk."
+category = "main"
+optional = false
+python-versions = "*"
+
+[[package]]
 name = "asgiref"
 version = "3.5.2"
 description = "ASGI specs, helper code, and adapters"
@@ -478,9 +486,13 @@ python-versions = "*"
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.10"
-content-hash = "472faf95db66bd4a15eb13b23c90b2a833b2529ac1cf38eaf6b5b217cbfe469d"
+content-hash = "4c4acb4ab1d172954cb4f545748f8ddeafc3463cc0c87ee3e8492a9fa78026be"
 
 [metadata.files]
+annoy = [
+    {file = "annoy-1.17.1-cp39-cp39-macosx_10_12_universal2.whl", hash = "sha256:d15f03c8986f0d48244843cbfd706b4530047edb1700de463d034e8d10c89dbf"},
+    {file = "annoy-1.17.1.tar.gz", hash = "sha256:bf177dbeafb81f63b2ac1e1246b1f26a2acc82e73ba46638734d29d8258122da"},
+]
 asgiref = [
     {file = "asgiref-3.5.2-py3-none-any.whl", hash = "sha256:1d2880b792ae8757289136f1db2b7b99100ce959b2aa57fd69dab783d05afac4"},
     {file = "asgiref-3.5.2.tar.gz", hash = "sha256:4a29362a6acebe09bf1d6640db38c1dc3d9217c68e6f9f6204d72667fc19a424"},
