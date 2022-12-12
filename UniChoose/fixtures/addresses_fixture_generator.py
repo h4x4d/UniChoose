@@ -34,8 +34,8 @@ for j, i in enumerate(addresses_with_coords.keys()):
         'model': 'universities.Region',
         'fields': {
             'name': i,
-            'latitude': addresses_with_coords[i][0],
-            'longitude': addresses_with_coords[i][1],
+            'latitude': addresses_with_coords[i][1],
+            'longitude': addresses_with_coords[i][0],
         },
     })
 
