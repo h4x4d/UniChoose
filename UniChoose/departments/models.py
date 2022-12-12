@@ -38,7 +38,9 @@ class WeightedDepartment(models.Model):
     edu_level = models.IntegerField()
     profile = models.IntegerField()
 
-    department = models.OneToOneField(Department, on_delete=models.CASCADE)
+    department = models.OneToOneField(Department,
+                                      on_delete=models.CASCADE,
+                                      related_name='weighted')
 
     def __str__(self):
         return f'{self.department.name} weighted'
