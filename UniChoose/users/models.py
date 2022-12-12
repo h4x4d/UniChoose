@@ -17,9 +17,16 @@ class Account(AbstractUser):
 class AccountDepartmentRelations(models.Model):
     account = models.ForeignKey(Account,
                                 on_delete=models.CASCADE,
-                                related_name='account')
+                                related_name='relations')
     department = models.ForeignKey(Department,
                                    on_delete=models.CASCADE,
-                                   related_name='department')
+                                   related_name='relations')
     strength = models.PositiveSmallIntegerField(
         verbose_name='relation strength')
+
+
+class Subject(models.Model):
+    account = models.ForeignKey(Account,
+                                on_delete=models.CASCADE,
+                                related_name='subjects')
+    name = models.CharField(max_length=50)
