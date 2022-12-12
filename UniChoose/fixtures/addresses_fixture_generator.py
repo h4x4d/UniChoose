@@ -1,6 +1,5 @@
 import json
 import os
-from pprint import pprint
 
 import requests
 
@@ -37,7 +36,7 @@ for j, i in enumerate(addresses_with_coords.keys()):
             'name': i,
             'latitude': addresses_with_coords[i][0],
             'longitude': addresses_with_coords[i][1],
-        }
+        },
     })
 
 json.dump(fixture,
