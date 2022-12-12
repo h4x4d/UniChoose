@@ -99,11 +99,11 @@ USE_L10N = True
 
 USE_TZ = True
 
-STATIC_URL = '/static_dev/'
+STATIC_URL = '/static-dev/'
 STATICFILES_DIRS = [
-    BASE_DIR / 'static_dev',
+    BASE_DIR / 'static-dev',
 ]
-STATIC_ROOT = BASE_DIR / '/static_dev'
+STATIC_ROOT = BASE_DIR / '/static-dev'
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
