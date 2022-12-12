@@ -11,6 +11,7 @@ class Account(AbstractUser):
     liked_dpts = models.ManyToManyField(Department,
                                         verbose_name='liked departments',
                                         related_name='users')
+    max_distance = models.IntegerField()
 
     region = models.ForeignKey(Region,
                                on_delete=models.CASCADE,
