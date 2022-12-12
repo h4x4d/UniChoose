@@ -34,6 +34,10 @@ update:
 down:
 	docker compose down -v
 
+.PHONY: build
+build: update down
+	docker compose up -d --build
+
 .PHONY: up
-up: update down
+up: update
 	docker compose up -d --build
