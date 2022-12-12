@@ -1,5 +1,6 @@
 from departments.models import Department
 from django.contrib.auth.models import AbstractUser
+from django.core.validators import MaxValueValidator
 from django.db import models
 from universities.models import Region, University
 
@@ -39,3 +40,5 @@ class Subject(models.Model):
                                 on_delete=models.CASCADE,
                                 related_name='subjects')
     name = models.CharField(max_length=50)
+    mark = models.PositiveSmallIntegerField(
+        validators=(MaxValueValidator(100), ))
