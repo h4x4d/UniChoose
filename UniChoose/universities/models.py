@@ -1,8 +1,9 @@
 import haversine as hs
-from core.models import CoreNameModel
 from django.core.validators import MaxValueValidator
 from django.db import models
 from haversine import Unit
+
+from core.models import CoreNameModel
 
 
 class Region(CoreNameModel):
