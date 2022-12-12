@@ -12,7 +12,7 @@ class Account(AbstractUser):
     liked_dpts = models.ManyToManyField(Department,
                                         verbose_name='liked departments',
                                         related_name='users')
-    max_distance = models.IntegerField()
+    max_distance = models.IntegerField(default=1000)
 
     region = models.ForeignKey(Region,
                                on_delete=models.CASCADE,
@@ -41,4 +41,4 @@ class Subject(models.Model):
                                 related_name='subjects')
     name = models.CharField(max_length=50)
     mark = models.PositiveSmallIntegerField(
-        validators=(MaxValueValidator(100), ))
+        default=100, validators=(MaxValueValidator(100), ))
