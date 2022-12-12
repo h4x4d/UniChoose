@@ -17,5 +17,4 @@ class LikedDepartments(ListView):
         context = {
             'liked_departments': self.get_queryset(request.user),
         }
-
         return render(request, self.template_name, context)

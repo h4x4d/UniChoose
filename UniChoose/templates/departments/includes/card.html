@@ -1,0 +1,26 @@
+<div class="dep-card">
+    <div class="dep-card-header-background">
+        <div class="dep-card-header">
+            <p class="dep-card-title">{{dep.name}}</p>
+        </div>
+    </div>
+    <div class="dep-card-subheader">
+        <p class="dep-card-subtitle">{{dep.profile}}</p>
+        <p class="dep-card-subtitle">{{dep.university}}</p>
+    </div>
+    <div class="dep-card-main">
+        <div class="dep-card-main-exams">
+            <p>Экзамены:</p>
+            {% for exam in dep.ege_subjects %}
+            {{exam}}
+            {% if not forloop.last %},{% endif %}
+            {% endfor %}
+        </div>
+        <div class="dep-card-score">
+            Минимум баллов:
+            <div class="pie" style="--p:calc(({{dep.entry_score}} / 311) * 100);--b:10px;">
+                {{dep.entry_score}} 
+            </div>
+        </div>
+    </div>
+</div>
