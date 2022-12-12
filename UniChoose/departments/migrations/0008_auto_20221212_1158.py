@@ -17,7 +17,7 @@ def update_weighted(apps, schema_editor):
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('departments', '0006_alter_weighteddepartment_vuz_rating'),
+        ('departments', '0007_auto_20221212_1158'),
     ]
 
     operations = [
