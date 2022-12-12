@@ -4,7 +4,7 @@ repos:
     hooks:
       - id: isort
         name: isort (python)
-        entry: bash -c 'cd UniChoose && isort . "$@"' --
+        entry: bash -c 'cd UniChoose && isort "$@"' --
 
   - repo: https://github.com/pre-commit/mirrors-yapf
     rev: 'v0.32.0'
