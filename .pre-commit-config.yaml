@@ -1,4 +1,10 @@
 repos:
+  - repo: https://github.com/pycqa/isort
+    rev: 5.10.1
+    hooks:
+      - id: isort
+        name: isort (python)
+        entry: bash -c 'cd UniChoose && isort . "$@"' --
 
   - repo: https://github.com/pre-commit/mirrors-yapf
     rev: 'v0.32.0'
