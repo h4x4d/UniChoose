@@ -1,8 +1,9 @@
-from core.models import CoreNameModel, WeightedModel
-from departments.models import Department
 from django.contrib.auth.models import AbstractUser
 from django.core.validators import MaxValueValidator
 from django.db import models
+
+from core.models import CoreNameModel, WeightedModel
+from departments.models import Department
 from universities.models import Region, University
 
 

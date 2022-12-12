@@ -15,7 +15,9 @@ def initial_filter(user):
     user_subjects = [subject.name for subject in user_subjects]
 
     departments = []
-    for department in Department.objects.filter(university__in=universities):
+    for department in Department.objects.filter(
+            university__in=universities).order_by('entry_score',
+                                                  'university__avg_rating'):
         if departments_checker(user_subjects, user_marks, department):
             departments.append(department)
 

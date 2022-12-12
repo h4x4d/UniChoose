@@ -1,7 +1,8 @@
-from core.models import CoreNameModel, WeightedModel
-from departments.validators import validate_department_classification_format
 from django.core.validators import MaxValueValidator
 from django.db import models
+
+from core.models import CoreNameModel, WeightedModel
+from departments.validators import validate_department_classification_format
 from universities.models import University
 
 
