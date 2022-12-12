@@ -1,3 +1,4 @@
+from core.models import CoreNameModel
 from departments.models import Department
 from django.contrib.auth.models import AbstractUser
 from django.core.validators import MaxValueValidator
@@ -35,10 +36,12 @@ class AccountDepartmentRelations(models.Model):
         verbose_name='relation strength')
 
 
-class Subject(models.Model):
+class Subject(CoreNameModel):
     account = models.ForeignKey(Account,
                                 on_delete=models.CASCADE,
                                 related_name='subjects')
-    name = models.CharField(max_length=50)
     mark = models.PositiveSmallIntegerField(
         default=100, validators=(MaxValueValidator(100), ))
+
+    def __str__(self):
+        return self.name
