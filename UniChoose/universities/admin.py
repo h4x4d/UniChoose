@@ -1,5 +1,5 @@
 from django.contrib import admin
-
-from universities.models import University
+from universities.models import Region, University
 
 admin.site.register(University)
+admin.site.register(Region)
