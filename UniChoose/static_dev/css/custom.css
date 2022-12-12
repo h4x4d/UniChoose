@@ -4,9 +4,6 @@ body{
     font-style: normal;
     min-height: 100vh;
 }
-
-footer{
-}
 main{
     min-height: 75vh;
     display: flex;
