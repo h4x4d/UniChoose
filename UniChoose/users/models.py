@@ -1,9 +1,15 @@
-from core.models import CoreNameModel
+from core.models import CoreNameModel, WeightedModel
 from departments.models import Department
 from django.contrib.auth.models import AbstractUser
 from django.core.validators import MaxValueValidator
 from django.db import models
 from universities.models import Region, University
+
+
+class Preference(WeightedModel):
+
+    def __str__(self):
+        return f'{self.user.username} preferences'
 
 
 class Account(AbstractUser):
@@ -21,6 +27,12 @@ class Account(AbstractUser):
                                null=True,
                                blank=True)
 
+    preference = models.OneToOneField(Preference,
+                                      on_delete=models.CASCADE,
+                                      related_name='user',
+                                      null=True,
+                                      blank=True)
+
     def __str__(self):
         return self.username
 
@@ -32,9 +44,7 @@ class AccountDepartmentRelations(models.Model):
     department = models.ForeignKey(Department,
                                    on_delete=models.CASCADE,
                                    related_name='relations')
-    strength = models.PositiveSmallIntegerField(
-        verbose_name='relation strength')
-
+    strength = models.SmallIntegerField(verbose_name='relation strength')
 
 class Subject(CoreNameModel):
     account = models.ForeignKey(Account,
