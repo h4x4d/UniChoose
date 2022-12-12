@@ -1,6 +1,5 @@
 from django.shortcuts import render
 from django.views.generic import ListView
-
 from users.models import Account
 
 # TODO: rewrite view according to Alexey templates
@@ -19,4 +18,4 @@ class LikedUniversities(ListView):
             'liked_universities': self.get_queryset(request.user),
         }
 
-        render(request, self.template_name, context)
+        return render(request, self.template_name, context)
