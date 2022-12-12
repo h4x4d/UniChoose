@@ -2,6 +2,18 @@
 {% block content %}
 {% load static %}
 <div class="container">
+  {% if user.is_authenticated %}
+  {{departments}}
+    <div class="card-group">
+      {% for dep in departments %}
+      <div class="card", data-index="{{ forloop.counter0 }}", data-status="{% if forloop.first %}active{% else %}inactive{% endif %}">
+        {{dep}}
+      </div>
+      {% endfor %}
+    </div>
+    <button onclick="handleLikeClick()">Like</button>
+    <button onclick="handleDislikeClick()">Disike</button>
+  {% else %}
     <div class="row align-items-center">
         <div class="col-md-6">
           <h1 class="display-5", style="font-weight: 800">Подбери кафедру своей мечты прямо сейчас</h1>
@@ -16,7 +28,6 @@
             <img src="{% static 'media/home.svg' %}" alt="здесь должна была быть картинка" >
           </div>
     </div>
-    {{ time }}
-    {{ universities }}
-</div>
+  </div>    
+{% endif %}
 {% endblock %}
