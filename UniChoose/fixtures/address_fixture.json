@@ -1,0 +1,713 @@
+[
+    {
+        "pk": 1,
+        "model": "universities.Region",
+        "fields": {
+            "name": "Брянская область",
+            "latitude": 33.422206,
+            "longitude": 52.909198
+        }
+    },
+    {
+        "pk": 2,
+        "model": "universities.Region",
+        "fields": {
+            "name": "Санкт-Петербург и Ленинградская область",
+            "latitude": 28.8778,
+            "longitude": 60.403747
+        }
+    },
+    {
+        "pk": 3,
+        "model": "universities.Region",
+        "fields": {
+            "name": "Чеченская республика",
+            "latitude": 45.747676,
+            "longitude": 43.305791
+        }
+    },
+    {
+        "pk": 4,
+        "model": "universities.Region",
+        "fields": {
+            "name": "Курская область",
+            "latitude": 36.121356,
+            "longitude": 51.535008
+        }
+    },
+    {
+        "pk": 5,
+        "model": "universities.Region",
+        "fields": {
+            "name": "Липецкая область",
+            "latitude": 39.147637,
+            "longitude": 52.864473
+        }
+    },
+    {
+        "pk": 6,
+        "model": "universities.Region",
+        "fields": {
+            "name": "Иркутская область",
+            "latitude": 106.363314,
+            "longitude": 57.100298
+        }
+    },
+    {
+        "pk": 7,
+        "model": "universities.Region",
+        "fields": {
+            "name": "Челябинская область",
+            "latitude": 60.39565,
+            "longitude": 54.446204
+        }
+    },
+    {
+        "pk": 8,
+        "model": "universities.Region",
+        "fields": {
+            "name": "Саратовская область",
+            "latitude": 46.797223,
+            "longitude": 51.578529
+        }
+    },
+    {
+        "pk": 9,
+        "model": "universities.Region",
+        "fields": {
+            "name": "Ханты-Мансийский автономный округ — Югра",
+            "latitude": 65.897517,
+            "longitude": 61.588912
+        }
+    },
+    {
+        "pk": 10,
+        "model": "universities.Region",
+        "fields": {
+            "name": "Новгородская область",
+            "latitude": 32.490222,
+            "longitude": 58.307715
+        }
+    },
+    {
+        "pk": 11,
+        "model": "universities.Region",
+        "fields": {
+            "name": "Республика Калмыкия",
+            "latitude": 45.325701,
+            "longitude": 46.41403
+        }
+    },
+    {
+        "pk": 12,
+        "model": "universities.Region",
+        "fields": {
+            "name": "Самарская область",
+            "latitude": 50.34431,
+            "longitude": 53.452932
+        }
+    },
+    {
+        "pk": 13,
+        "model": "universities.Region",
+        "fields": {
+            "name": "Кабардино-Балкарская Республика",
+            "latitude": 43.408283,
+            "longitude": 43.494402
+        }
+    },
+    {
+        "pk": 14,
+        "model": "universities.Region",
+        "fields": {
+            "name": "Астраханская область",
+            "latitude": 47.466198,
+            "longitude": 46.851463
+        }
+    },
+    {
+        "pk": 15,
+        "model": "universities.Region",
+        "fields": {
+            "name": "Республика Карелия",
+            "latitude": 33.232608,
+            "longitude": 63.621328
+        }
+    },
+    {
+        "pk": 16,
+        "model": "universities.Region",
+        "fields": {
+            "name": "Москва и Московская область",
+            "latitude": 37.09681,
+            "longitude": 55.826119
+        }
+    },
+    {
+        "pk": 17,
+        "model": "universities.Region",
+        "fields": {
+            "name": "Томская область",
+            "latitude": 81.950869,
+            "longitude": 58.740293
+        }
+    },
+    {
+        "pk": 18,
+        "model": "universities.Region",
+        "fields": {
+            "name": "Костромская область",
+            "latitude": 43.788504,
+            "longitude": 58.456007
+        }
+    },
+    {
+        "pk": 19,
+        "model": "universities.Region",
+        "fields": {
+            "name": "Вологодская область",
+            "latitude": 44.049627,
+            "longitude": 60.138993
+        }
+    },
+    {
+        "pk": 20,
+        "model": "universities.Region",
+        "fields": {
+            "name": "Свердловская область",
+            "latitude": 61.530761,
+            "longitude": 58.58676
+        }
+    },
+    {
+        "pk": 21,
+        "model": "universities.Region",
+        "fields": {
+            "name": "Республика Башкортостан",
+            "latitude": 56.525537,
+            "longitude": 54.271505
+        }
+    },
+    {
+        "pk": 22,
+        "model": "universities.Region",
+        "fields": {
+            "name": "Чувашская Республика",
+            "latitude": 47.086884,
+            "longitude": 55.492023
+        }
+    },
+    {
+        "pk": 23,
+        "model": "universities.Region",
+        "fields": {
+            "name": "Республика Хакасия",
+            "latitude": 89.897078,
+            "longitude": 53.386363
+        }
+    },
+    {
+        "pk": 24,
+        "model": "universities.Region",
+        "fields": {
+            "name": "Республика Марий Эл",
+            "latitude": 48.197867,
+            "longitude": 56.485739
+        }
+    },
+    {
+        "pk": 25,
+        "model": "universities.Region",
+        "fields": {
+            "name": "Республика Ингушетия",
+            "latitude": 45.05459,
+            "longitude": 43.10359
+        }
+    },
+    {
+        "pk": 26,
+        "model": "universities.Region",
+        "fields": {
+            "name": "Ярославская область",
+            "latitude": 39.105138,
+            "longitude": 57.817361
+        }
+    },
+    {
+        "pk": 27,
+        "model": "universities.Region",
+        "fields": {
+            "name": "Республика Алтай",
+            "latitude": 87.015454,
+            "longitude": 50.73624
+        }
+    },
+    {
+        "pk": 28,
+        "model": "universities.Region",
+        "fields": {
+            "name": "Республика Коми",
+            "latitude": 54.789669,
+            "longitude": 64.125467
+        }
+    },
+    {
+        "pk": 29,
+        "model": "universities.Region",
+        "fields": {
+            "name": "Смоленская область",
+            "latitude": 32.998552,
+            "longitude": 54.956198
+        }
+    },
+    {
+        "pk": 30,
+        "model": "universities.Region",
+        "fields": {
+            "name": "Республика Саха (Якутия)",
+            "latitude": 119.845661,
+            "longitude": 65.061073
+        }
+    },
+    {
+        "pk": 31,
+        "model": "universities.Region",
+        "fields": {
+            "name": "Республика Мордовия",
+            "latitude": 44.319678,
+            "longitude": 54.205758
+        }
+    },
+    {
+        "pk": 32,
+        "model": "universities.Region",
+        "fields": {
+            "name": "Хабаровский край",
+            "latitude": 136.637043,
+            "longitude": 51.695886
+        }
+    },
+    {
+        "pk": 33,
+        "model": "universities.Region",
+        "fields": {
+            "name": "Республика Дагестан",
+            "latitude": 47.095751,
+            "longitude": 42.259793
+        }
+    },
+    {
+        "pk": 34,
+        "model": "universities.Region",
+        "fields": {
+            "name": "Псковская область",
+            "latitude": 29.23692,
+            "longitude": 57.236486
+        }
+    },
+    {
+        "pk": 35,
+        "model": "universities.Region",
+        "fields": {
+            "name": "Забайкальский край",
+            "latitude": 116.200433,
+            "longitude": 52.847263
+        }
+    },
+    {
+        "pk": 36,
+        "model": "universities.Region",
+        "fields": {
+            "name": "Белгородская область",
+            "latitude": 37.303207,
+            "longitude": 50.872237
+        }
+    },
+    {
+        "pk": 37,
+        "model": "universities.Region",
+        "fields": {
+            "name": "Удмуртская Республика",
+            "latitude": 52.796981,
+            "longitude": 57.166789
+        }
+    },
+    {
+        "pk": 38,
+        "model": "universities.Region",
+        "fields": {
+            "name": "Пермский край",
+            "latitude": 56.225679,
+            "longitude": 59.117698
+        }
+    },
+    {
+        "pk": 39,
+        "model": "universities.Region",
+        "fields": {
+            "name": "Тульская область",
+            "latitude": 37.575702,
+            "longitude": 53.888069
+        }
+    },
+    {
+        "pk": 40,
+        "model": "universities.Region",
+        "fields": {
+            "name": "Приморский край",
+            "latitude": 134.709375,
+            "longitude": 45.04198
+        }
+    },
+    {
+        "pk": 41,
+        "model": "universities.Region",
+        "fields": {
+            "name": "Воронежская область",
+            "latitude": 40.233395,
+            "longitude": 50.970903
+        }
+    },
+    {
+        "pk": 42,
+        "model": "universities.Region",
+        "fields": {
+            "name": "Калужская область",
+            "latitude": 35.445194,
+            "longitude": 54.371805
+        }
+    },
+    {
+        "pk": 43,
+        "model": "universities.Region",
+        "fields": {
+            "name": "Курганская область",
+            "latitude": 64.809405,
+            "longitude": 55.448352
+        }
+    },
+    {
+        "pk": 44,
+        "model": "universities.Region",
+        "fields": {
+            "name": "Республика Адыгея",
+            "latitude": 40.252978,
+            "longitude": 44.429866
+        }
+    },
+    {
+        "pk": 45,
+        "model": "universities.Region",
+        "fields": {
+            "name": "Тверская область",
+            "latitude": 34.706204,
+            "longitude": 57.093033
+        }
+    },
+    {
+        "pk": 46,
+        "model": "universities.Region",
+        "fields": {
+            "name": "Амурская область",
+            "latitude": 127.728073,
+            "longitude": 53.413346
+        }
+    },
+    {
+        "pk": 47,
+        "model": "universities.Region",
+        "fields": {
+            "name": "Еврейская автономная область",
+            "latitude": 132.257621,
+            "longitude": 48.522908
+        }
+    },
+    {
+        "pk": 48,
+        "model": "universities.Region",
+        "fields": {
+            "name": "Новосибирская область",
+            "latitude": 79.26487,
+            "longitude": 55.582396
+        }
+    },
+    {
+        "pk": 49,
+        "model": "universities.Region",
+        "fields": {
+            "name": "Алтайский край",
+            "latitude": 82.530022,
+            "longitude": 52.129671
+        }
+    },
+    {
+        "pk": 50,
+        "model": "universities.Region",
+        "fields": {
+            "name": "Пензенская область",
+            "latitude": 43.946823,
+            "longitude": 53.240932
+        }
+    },
+    {
+        "pk": 51,
+        "model": "universities.Region",
+        "fields": {
+            "name": "Республика Бурятия",
+            "latitude": 112.348699,
+            "longitude": 54.544222
+        }
+    },
+    {
+        "pk": 52,
+        "model": "universities.Region",
+        "fields": {
+            "name": "Красноярский край",
+            "latitude": 95.968486,
+            "longitude": 67.236783
+        }
+    },
+    {
+        "pk": 53,
+        "model": "universities.Region",
+        "fields": {
+            "name": "Калининградская область",
+            "latitude": 21.218944,
+            "longitude": 54.560096
+        }
+    },
+    {
+        "pk": 54,
+        "model": "universities.Region",
+        "fields": {
+            "name": "Ставропольский край",
+            "latitude": 43.344521,
+            "longitude": 44.953551
+        }
+    },
+    {
+        "pk": 55,
+        "model": "universities.Region",
+        "fields": {
+            "name": "Ивановская область",
+            "latitude": 41.966406,
+            "longitude": 56.967841
+        }
+    },
+    {
+        "pk": 56,
+        "model": "universities.Region",
+        "fields": {
+            "name": "Ростовская область",
+            "latitude": 41.268137,
+            "longitude": 47.728738
+        }
+    },
+    {
+        "pk": 57,
+        "model": "universities.Region",
+        "fields": {
+            "name": "Сахалинская область",
+            "latitude": 142.750806,
+            "longitude": 50.150926
+        }
+    },
+    {
+        "pk": 58,
+        "model": "universities.Region",
+        "fields": {
+            "name": "Республика Крым и Севастополь",
+            "latitude": 33.525135,
+            "longitude": 44.616495
+        }
+    },
+    {
+        "pk": 59,
+        "model": "universities.Region",
+        "fields": {
+            "name": "Омская область",
+            "latitude": 73.344425,
+            "longitude": 56.103477
+        }
+    },
+    {
+        "pk": 60,
+        "model": "universities.Region",
+        "fields": {
+            "name": "Мурманская область",
+            "latitude": 35.01006,
+            "longitude": 68.004158
+        }
+    },
+    {
+        "pk": 61,
+        "model": "universities.Region",
+        "fields": {
+            "name": "Республика Северная Осетия - Алания",
+            "latitude": 44.262042,
+            "longitude": 43.092669
+        }
+    },
+    {
+        "pk": 62,
+        "model": "universities.Region",
+        "fields": {
+            "name": "Нижегородская область",
+            "latitude": 44.279559,
+            "longitude": 56.595648
+        }
+    },
+    {
+        "pk": 63,
+        "model": "universities.Region",
+        "fields": {
+            "name": "Магаданская область",
+            "latitude": 154.036835,
+            "longitude": 62.575815
+        }
+    },
+    {
+        "pk": 64,
+        "model": "universities.Region",
+        "fields": {
+            "name": "Республика Тыва",
+            "latitude": 94.793085,
+            "longitude": 51.584332
+        }
+    },
+    {
+        "pk": 65,
+        "model": "universities.Region",
+        "fields": {
+            "name": "Владимирская область",
+            "latitude": 40.898894,
+            "longitude": 55.9042
+        }
+    },
+    {
+        "pk": 66,
+        "model": "universities.Region",
+        "fields": {
+            "name": "Рязанская область",
+            "latitude": 40.950331,
+            "longitude": 54.55973
+        }
+    },
+    {
+        "pk": 67,
+        "model": "universities.Region",
+        "fields": {
+            "name": "Архангельская область",
+            "latitude": 43.33667,
+            "longitude": 63.637521
+        }
+    },
+    {
+        "pk": 68,
+        "model": "universities.Region",
+        "fields": {
+            "name": "Тюменская область",
+            "latitude": 68.096053,
+            "longitude": 57.541821
+        }
+    },
+    {
+        "pk": 69,
+        "model": "universities.Region",
+        "fields": {
+            "name": "Ульяновская область",
+            "latitude": 47.606533,
+            "longitude": 53.891062
+        }
+    },
+    {
+        "pk": 70,
+        "model": "universities.Region",
+        "fields": {
+            "name": "Кемеровская область",
+            "latitude": 86.990391,
+            "longitude": 54.897945
+        }
+    },
+    {
+        "pk": 71,
+        "model": "universities.Region",
+        "fields": {
+            "name": "Республика Татарстан",
+            "latitude": 50.911013,
+            "longitude": 55.350341
+        }
+    },
+    {
+        "pk": 72,
+        "model": "universities.Region",
+        "fields": {
+            "name": "Краснодарский край",
+            "latitude": 39.610422,
+            "longitude": 45.54491
+        }
+    },
+    {
+        "pk": 73,
+        "model": "universities.Region",
+        "fields": {
+            "name": "Камчатский край",
+            "latitude": 169.782981,
+            "longitude": 61.350179
+        }
+    },
+    {
+        "pk": 74,
+        "model": "universities.Region",
+        "fields": {
+            "name": "Оренбургская область",
+            "latitude": 53.498691,
+            "longitude": 52.743533
+        }
+    },
+    {
+        "pk": 75,
+        "model": "universities.Region",
+        "fields": {
+            "name": "Карачаево-Черкесская Республика",
+            "latitude": 41.753928,
+            "longitude": 43.770947
+        }
+    },
+    {
+        "pk": 76,
+        "model": "universities.Region",
+        "fields": {
+            "name": "Орловская область",
+            "latitude": 36.481042,
+            "longitude": 52.78146
+        }
+    },
+    {
+        "pk": 77,
+        "model": "universities.Region",
+        "fields": {
+            "name": "Волгоградская область",
+            "latitude": 44.151415,
+            "longitude": 49.615821
+        }
+    },
+    {
+        "pk": 78,
+        "model": "universities.Region",
+        "fields": {
+            "name": "Кировская область",
+            "latitude": 49.695439,
+            "longitude": 58.344112
+        }
+    },
+    {
+        "pk": 79,
+        "model": "universities.Region",
+        "fields": {
+            "name": "Тамбовская область",
+            "latitude": 41.592258,
+            "longitude": 52.474699
+        }
+    }
+]

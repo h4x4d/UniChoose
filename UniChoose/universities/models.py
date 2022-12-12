@@ -1,6 +1,21 @@
+import haversine as hs
 from core.models import CoreNameModel
 from django.core.validators import MaxValueValidator
 from django.db import models
+from haversine import Unit
+
+
+class Region(CoreNameModel):
+    latitude = models.FloatField()
+    longitude = models.FloatField()
+
+    def get_distance(self, other, unit=Unit.KILOMETERS):
+        return hs.haversine((self.latitude, self.longitude),
+                            (other.latitude, other.longitude),
+                            unit=unit)
+
+    def __str__(self):
+        return self.name
 
 
 class University(CoreNameModel):
@@ -15,10 +30,12 @@ class University(CoreNameModel):
     )
     rating_count = models.PositiveSmallIntegerField(
         verbose_name='rating count')
-    region = models.CharField(
-        verbose_name='region',
-        max_length=100,
-    )
+
+    region = models.ForeignKey(Region,
+                               on_delete=models.CASCADE,
+                               related_name='universities',
+                               null=True,
+                               blank=True)
 
     def __str__(self):
         return self.name
