@@ -14,6 +14,7 @@ urlpatterns = [
     path('departments/', include('departments.urls')),
     # * app_name = 'aboutpage'
     path('about/', include('about.urls')),
+    path('api/', include('api.urls')),
 ]
 
 if settings.DEBUG:

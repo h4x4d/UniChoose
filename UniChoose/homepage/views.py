@@ -2,8 +2,8 @@ from django.shortcuts import render
 from django.views.generic import TemplateView
 
 # TODO: rewrite view according to Alexey templates
-from homepage.filters.initial_filter import initial_filter
-from homepage.filters.nearest_filter import nearest_filter
+from api.filters.initial_filter import initial_filter
+from api.filters.nearest_filter import nearest_filter
 from users.models import Preference
 
 
