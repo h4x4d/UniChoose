@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.views.generic import ListView
+
 from users.models import Account
 
 # TODO: rewrite view according to Alexey templates
@@ -9,6 +10,7 @@ class LikedDepartments(ListView):
     # ! Haven't tested this view yet
 
     template_name = 'departments/index.html'
+    paginate_by = 10
 
     def get_queryset(self, account: Account):
         return account.liked_dpts.all()

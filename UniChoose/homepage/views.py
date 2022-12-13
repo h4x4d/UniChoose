@@ -8,7 +8,7 @@ from users.models import Preference
 
 class HomepageView(TemplateView):
     template_name = 'homepage/index.html'
-
+    
     def get(self, request):
         user = request.user
         departments = initial_filter(user)
