@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
     <link rel="stylesheet" href="{% static 'css/custom.css' %}">
     <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+    <script src="{%static 'js/custom.js' %}"></script>
     <meta name="msapplication-TileColor" content="#da532c">
   </head>
   <body>
@@ -17,6 +18,8 @@
       <p>Здесь должен был быть контент</p>
       {% endblock %}
     </main>
-    {% include "includes/footer.html" %}
   </body>
-</html>
+  <div class="d-flex align-items-center">
+  {% include "includes/footer.html" %}
+  </div>
+  </html>
