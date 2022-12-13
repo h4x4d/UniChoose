@@ -7,6 +7,7 @@ charset-normalizer==2.1.1
 distlib==0.3.6 
 django-debug-toolbar==3.8.1 
 django==3.2.16 
+djangorestframework==3.14.0 
 dlint==0.13.0 
 eradicate==2.1.0 
 filelock==3.8.2 

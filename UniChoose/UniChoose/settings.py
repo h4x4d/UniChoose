@@ -125,3 +125,9 @@ AUTH_USER_MODEL = 'users.Account'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 APPEND_SLASH = True
+
+REST_FRAMEWORK = {
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.'
+    'LimitOffsetPagination',
+    'PAGE_SIZE': 10,
+}
