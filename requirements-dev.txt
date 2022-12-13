@@ -23,7 +23,7 @@ gunicorn==20.1.0
 haversine==2.7.0 
 identify==2.5.9 
 idna==3.4 
-isort==5.10.1 
+isort==5.11.1 
 mccabe==0.7.0 
 nodeenv==1.7.0 
 pep8-naming==0.13.2 
