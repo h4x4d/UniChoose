@@ -45,7 +45,7 @@ copy_migration: create_migration
 
 
 .PHONY: build-action
-build-action: update down
+build-action: update down copy_migration
 	docker compose up -d --build
 
 .PHONY: copy_migration_to_server
