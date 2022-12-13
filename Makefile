@@ -45,18 +45,14 @@ copy_migration: create_migration
 
 
 .PHONY: build-action
-build-action: copy_migration update down
+build-action: copy_migration down
 	docker compose up -d --build
-
-.PHONY: copy_migration_to_server
-copy_migration_to_server: build-action
-	docker compose cp /root/UniChoose/UniChoose/fixtures/fixture.json  web:/code/UniChoose/fixtures/fixture.json
 
 
 .PHONY: build
-build: copy_migration_to_server
-	docker compose exec web python -Xutf8 UniChoose/manage.py loaddata UniChoose/fixtures/fixture.json
+build: build-action
+	docker compose cp /root/UniChoose/UniChoose/fixtures/fixture.json  web:/code/UniChoose/fixtures/fixture.json
 
 .PHONY: up
-up: update
+up:
 	docker compose up -d --build
