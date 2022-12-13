@@ -3,6 +3,7 @@ from pathlib import Path
 
 if os.getenv('DEVELOP', 1):
     from dotenv import load_dotenv
+
     load_dotenv('../.env')
 
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -25,6 +26,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'debug_toolbar',
+    'rest_framework',
     'homepage.apps.HomepageConfig',
     'departments.apps.DepartmentsConfig',
     'about.apps.AboutConfig',
