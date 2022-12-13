@@ -19,5 +19,6 @@ def departments_checker(user_subjects, user_marks, user_id, department):
                 mark += user_marks[user_subjects.index(subject)]
 
     if mark >= department.entry_score:
-        return True
+        if user_id in [rel.user_id for rel in department.relations.all()]:
+            return False
     return False
