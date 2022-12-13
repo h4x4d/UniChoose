@@ -16,11 +16,17 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='accountdepartmentrelations',
             name='account',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='account', to=settings.AUTH_USER_MODEL),
+            field=models.ForeignKey(
+                on_delete=django.db.models.deletion.CASCADE,
+                related_name='account',
+                to=settings.AUTH_USER_MODEL),
         ),
         migrations.AlterField(
             model_name='accountdepartmentrelations',
             name='department',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='department', to='departments.department'),
+            field=models.ForeignKey(
+                on_delete=django.db.models.deletion.CASCADE,
+                related_name='department',
+                to='departments.department'),
         ),
     ]
