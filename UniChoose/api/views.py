@@ -18,25 +18,6 @@ class DepartmentViewSet(viewsets.ReadOnlyModelViewSet):
     permission_classes = [IsAuthenticated]
 
 
-def queryset_getter(user):
-    departments = initial_filter(user)
-
-    if user.preference:
-        departments = nearest_filter(departments, user)
-    else:
-        preference = Preference(
-            entry_score=310,
-            vuz_rating=10.0,
-            edu_level=0,
-            profile=0,
-        )
-        preference.save()
-        user.preference = preference
-        user.save()
-
-    return Department.objects.filter(pk__in=departments)
-
-
 class PreferenceViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = Department.objects.all()
 
@@ -46,9 +27,25 @@ class PreferenceViewSet(viewsets.ReadOnlyModelViewSet):
 
     def get_queryset(self):
         user = self.request.user
-        queryset = queryset_getter(user)
 
-        return queryset
+        departments = initial_filter(user)
+
+        if user.preference:
+            departments = nearest_filter(departments, user, 1)
+        else:
+            preference = Preference(
+                entry_score=310,
+                vuz_rating=10.0,
+                edu_level=0,
+                profile=0,
+            )
+            preference.save()
+            user.preference = preference
+            user.save()
+
+            departments = departments[:2]
+
+        return Department.objects.filter(pk__in=departments)
 
 
 class APILike(APIView):
@@ -61,9 +58,7 @@ class APILike(APIView):
         relation.strength = 1
         relation.save()
 
-        return Response(
-            DepartmentSerializer(queryset_getter(request.user),
-                                 many=True).data)
+        return Response({'success': True})
 
 
 class APIDislike(APIView):
@@ -76,6 +71,4 @@ class APIDislike(APIView):
         relation.strength = -1
         relation.save()
 
-        return Response(
-            DepartmentSerializer(queryset_getter(request.user),
-                                 many=True).data)
+        return Response({'success': True})

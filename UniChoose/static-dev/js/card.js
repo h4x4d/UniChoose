@@ -1,11 +1,17 @@
+const edu_levels = {
+    0: 'Бакалавриат',
+    1: 'Специалитет',
+    2: 'Магистратура'
+}
+
 class Card {
     constructor({
-                    text,
+                    department,
                     onDismiss,
                     onLike,
                     onDislike
                 }) {
-        this.text = text;
+        this.department = department;
         this.onDismiss = onDismiss;
         this.onLike = onLike;
         this.onDislike = onDislike;
@@ -24,14 +30,30 @@ class Card {
     }
 
     #init = () => {
+        console.log(this.department)
         const card = document.createElement('div');
         card.classList.add('card');
-        card.classList.add('container');
-
-        const textfield = document.createElement('h4');
+        card.classList.add('d-flex');
+        card.classList.add('aligns-items-center');
+        card.classList.add('justify-content-center');
         card.classList.add('text-center');
-        textfield.innerText = '\n' + this.text
-        card.append(textfield);
+
+
+        const level_field = document.createElement('h6');
+        level_field.innerText = edu_levels[this.department['edu_level']]
+        card.append(level_field);
+
+        const name_field = document.createElement('h3');
+        name_field.innerText = this.department['name'] + '\n' + this.department['profile_class']
+        card.append(name_field);
+
+        const entry_field = document.createElement('h4');
+        entry_field.innerText = 'Проходной балл: ' + this.department['entry_score'] + '\n(' + this.department['ege_subjects'].join(', ') + ')'
+        card.append(entry_field);
+
+        const university_field = document.createElement('h6');
+        university_field.innerText = this.department['university_name'] + ' (' + this.department['university_rating'] + ' / ' + this.department['university_rating_count'] + ' оценок)'
+        card.append(university_field);
 
         this.element = card;
         if (this.#isTouchDevice()) {
@@ -127,10 +149,10 @@ class Card {
             this.onDismiss();
         }
         if (typeof this.onLike === 'function' && direction === 1) {
-            this.onLike(this.text);
+            this.onLike(this.department.id);
         }
         if (typeof this.onDislike === 'function' && direction === -1) {
-            this.onDislike(this.text);
+            this.onDislike(this.department.id);
         }
     }
 }

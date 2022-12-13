@@ -3,7 +3,7 @@ from annoy import AnnoyIndex
 from departments.models import WeightedDepartment
 
 
-def nearest_filter(departments, user):
+def nearest_filter(departments, user, amount=2):
     u = AnnoyIndex(4, 'angular')
     preference = user.preference
 
@@ -19,4 +19,4 @@ def nearest_filter(departments, user):
 
     return u.get_nns_by_vector((preference.entry_score, preference.profile,
                                 preference.vuz_rating, preference.edu_level),
-                               2)
+                               amount)

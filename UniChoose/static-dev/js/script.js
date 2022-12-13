@@ -1,15 +1,9 @@
-// DOM
 const swiper = document.querySelector('#swiper');
-const like = document.querySelector('#like');
-const dislike = document.querySelector('#dislike');
 
 // constants
 const urls = [
-  'https://source.unsplash.com/random/1000x1000/?sky',
-  'https://source.unsplash.com/random/1000x1000/?landscape',
-  'https://source.unsplash.com/random/1000x1000/?ocean',
-  'https://source.unsplash.com/random/1000x1000/?moutain',
-  'https://source.unsplash.com/random/1000x1000/?forest'
+    'https://source.unsplash.com/random/1000x1000/?sky',
+    'https://source.unsplash.com/random/1000x1000/?landscape',
 ];
 
 // variables
@@ -17,30 +11,31 @@ let cardCount = 0;
 
 // functions
 function appendNewCard() {
-  const card = new Card({
-    text: urls[cardCount % 5],
-    onDismiss: appendNewCard,
-    onLike: (text) => {
-      like.style.animationPlayState = 'running';
-      like.classList.toggle('trigger');
-      console.log(text)
-    },
-    onDislike: (text) => {
-      dislike.style.animationPlayState = 'running';
-      dislike.classList.toggle('trigger');
-      console.log(text)
-    }
-  });
-  swiper.append(card.element);
-  cardCount++;
+    const request = new Request('/api/preference/');
+    fetch(request).then(response => {
+        response.json().then(r => {
+            const card = new Card({
+                department: r['results'][0],
+                onDismiss: appendNewCard,
+                onLike: like_func,
+                onDislike: dislike_func
+            });
+            swiper.append(card.element);
 
-  const cards = swiper.querySelectorAll('.card:not(.dismissing)');
-  cards.forEach((card, index) => {
-    card.style.setProperty('--i', index);
-  });
+        })
+
+    })
+
+    cardCount++;
+    console.log(cardCount)
+
+    const cards = swiper.querySelectorAll('.card:not(.dismissing)');
+    cards.forEach((card, index) => {
+        card.style.setProperty('--i', index);
+    });
 }
 
 // first 5 cards
-for (let i = 0; i < 5; i++) {
-  appendNewCard();
+for (let i = 0; i < 1; i++) {
+    appendNewCard();
 }
