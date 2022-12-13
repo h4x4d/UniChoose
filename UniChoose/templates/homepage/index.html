@@ -19,8 +19,8 @@
           <h1 class="display-5", style="font-weight: 800">Подбери кафедру своей мечты прямо сейчас</h1>
           <h3 class="display-7">Заполни информацию о себе и рассмотри множество специальностей разных ВУЗов, интересных именно тебе.</h4>
             <div class="row">
-            <a href="#}" class="btn btn-primary" aria-current="page">Регистрация</a>
-            <a href="#" class="btn btn-outline-dark" aria-current="page">Вход</a>
+            <a href="{% url 'auth:signup' %}" class="btn btn-primary" aria-current="page">Регистрация</a>
+            <a href="{% url 'auth:login' %}" class="btn btn-outline-dark" aria-current="page">Вход</a>
             </div>
             <br><br>
          </div>

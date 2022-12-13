@@ -1,6 +1,12 @@
 let activeIndex = 0;
+// Placeholders
+document.getElementById("id_username").placeholder = "Логин";
+document.getElementById("id_password").placeholder = "Пароль";
+
+
 
 const cards = document.getElementsByClassName("card-group");
+
 const handleLikeClick = () => {
     const nextIndex = activeIndex + 1;
 

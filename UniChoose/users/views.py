@@ -2,8 +2,7 @@ from django.contrib.auth import login
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render
 from django.urls import reverse_lazy
-from django.views.generic import DetailView, FormView, ListView, View
-
+from django.views.generic import FormView, View
 from users.forms import EditProfileForm, SignUpForm
 from users.models import Account
 

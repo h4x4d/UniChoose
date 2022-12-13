@@ -201,3 +201,35 @@ main{
 .card[data-status="active"]{
     display: flex;
 }
+/* forms */
+.form-label{
+    display: none;
+}
+.form-control{
+    border: #242141 2px solid;
+}
+.form-control:focus{
+    border-color: #6b5ed7;
+    box-shadow: 0 0 0 0.25rem #6b5ed7;
+}
+input {
+    text-align: center;
+    height: 60px;
+}
+input::placeholder{
+    color:#242141;
+    opacity: 1;
+    font-weight: bold;
+  }
+
+.form-holder{
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width:500px;
+}
+.form-btn-holder{
+    margin-left: -5px;
+    margin-right: -5px;
+}

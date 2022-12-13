@@ -1,6 +1,6 @@
 import os
 from pathlib import Path
-
+from django.urls import reverse_lazy
 
 if os.getenv('DEVELOP', 1):
     from dotenv import load_dotenv
@@ -28,6 +28,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'debug_toolbar',
     'rest_framework',
+    'crispy_forms',
+    'crispy_bootstrap5',
     'homepage.apps.HomepageConfig',
     'departments.apps.DepartmentsConfig',
     'about.apps.AboutConfig',
@@ -128,3 +130,7 @@ LOGIN_REDIRECT_URL = ''
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 APPEND_SLASH = True
+
+CRISPY_ALLOWED_TEMPLATE_PACKS = 'bootstrap5'
+
+CRISPY_TEMPLATE_PACK = 'bootstrap5'
