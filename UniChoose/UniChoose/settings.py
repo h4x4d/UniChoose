@@ -125,7 +125,7 @@ MEDIA_ROOT = BASE_DIR / 'media/'
 
 LOGIN_URL = reverse_lazy('auth:login')
 AUTH_USER_MODEL = 'users.Account'
-LOGIN_REDIRECT_URL = ''
+LOGIN_REDIRECT_URL = 'homepage:home'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
@@ -134,3 +134,6 @@ APPEND_SLASH = True
 CRISPY_ALLOWED_TEMPLATE_PACKS = 'bootstrap5'
 
 CRISPY_TEMPLATE_PACK = 'bootstrap5'
+
+EMAIL_BACKEND = 'django.core.mail.backends.filebased.EmailBackend'
+EMAIL_FILE_PATH = BASE_DIR / 'sent_emails'

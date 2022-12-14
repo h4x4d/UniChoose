@@ -233,3 +233,12 @@ input::placeholder{
     margin-left: -5px;
     margin-right: -5px;
 }
+.btn-wide{
+    width: 434px;
+}
+#hint_id_new_password1{
+    display: none;
+}
+.flex-direction-column{
+    flex-direction: column;
+}

@@ -46,6 +46,7 @@ class AccountDepartmentRelations(models.Model):
                                    related_name='relations')
     strength = models.SmallIntegerField(verbose_name='relation strength')
 
+
 class Subject(CoreNameModel):
     account = models.ForeignKey(Account,
                                 on_delete=models.CASCADE,
