@@ -3,16 +3,9 @@ body{
     font-family: 'Manrope';
     font-style: normal;
     min-height: 100vh;
-    padding-bottom:100px;
-}
-
-footer{
-    position:absolute;
-    bottom:0;
-    width:70%;
 }
 main{
-    height: 75vh;
+    min-height: 75vh;
     display: flex;
     align-items: center;
 }
@@ -138,3 +131,114 @@ main{
     color: #242141;
     font-weight: bold;
  }
+
+/* department card */
+.dep-card{
+    border: #242141 2px solid;
+    padding: 0;
+    margin-left: 10px;
+    margin-right: 10px;
+    border-radius: 10px;
+    width: 600px;
+}
+.dep-card-header{
+    padding:10px;
+    background: #242141;
+    color: white;
+    border-radius: 7px;
+    border-bottom: #242141 2px solid;
+}
+.dep-card-title{
+    font-weight: bold;
+    font-size: 18px;
+}
+.dep-card-subheader{
+    /* background: #f4edfd; */
+    padding:10px;
+    color:#242141;
+}
+.dep-card-subtitle{
+    font-size: 14px;
+    visibility: 0;
+}
+.dep-card-main{
+    border-top: #242141 2px solid;
+    display:flex;
+    padding: 10px;
+}
+.dep-card-score{
+    display: flex;
+    justify-content: space-around;
+}
+.pie {
+    --w:70px;
+
+    width: var(--w);
+    aspect-ratio: 1;
+    position: relative;
+    display: inline-grid;
+    place-content: center;
+    margin: 5px;
+    font-size: 18px;
+    font-weight: bold;
+    font-family: 'Manrope';
+  }
+  .pie:before {
+    content: "";
+    position: absolute;
+    border-radius: 50%;
+    inset: 0;
+    background: conic-gradient(#6b5ed7 calc(var(--p)*1%),#0000 0);
+    -webkit-mask:radial-gradient(farthest-side,#0000 calc(99% - var(--b)),#000 calc(100% - var(--b)));
+            mask:radial-gradient(farthest-side,#0000 calc(99% - var(--b)),#000 calc(100% - var(--b)));
+  }
+.card{
+    width:auto;
+}
+.card[data-status="inactive"]{
+    display: none;
+}
+.card[data-status="active"]{
+    display: flex;
+}
+/* forms */
+.form-label{
+    display: none;
+}
+.form-control{
+    border: #242141 2px solid;
+}
+.form-control:focus{
+    border-color: #6b5ed7;
+    box-shadow: 0 0 0 0.25rem #6b5ed7;
+}
+input {
+    text-align: center;
+    height: 60px;
+}
+input::placeholder{
+    color:#242141;
+    opacity: 1;
+    font-weight: bold;
+  }
+
+.form-holder{
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width:500px;
+}
+.form-btn-holder{
+    margin-left: -5px;
+    margin-right: -5px;
+}
+.btn-wide{
+    width: 434px;
+}
+#hint_id_new_password1{
+    display: none;
+}
+.flex-direction-column{
+    flex-direction: column;
+}

@@ -10,17 +10,17 @@
     <li class="nav-item d-flex align-items-center"><a href="{% url 'aboutpage:about' %}" class="{% if view_name == 'aboutpage:about' %}nav-link active disabled{% else %} nav-link {% endif %}">Что это?</a></li>
     {% if user.is_authenticated %}
     <div class="dropdown-menu">
-        <button class="btn btn-primary menu-btn"><a class="links-hidden" >Моя информация</a></button>
+        <button class="btn btn-primary menu-btn"><a class="links-hidden" href={% url 'auth:profile' %}>Моя информация</a></button>
         <div class="menu-content">
             <a class="links-hidden" href="{% url 'departments:liked_dpts' %}">Понравившиеся</a>
-            <a class="links-hidden" href="#">Изменить баллы</a>
-            <a class="links-hidden" href="#">Сменить пароль</a>
-            <a class="links-hidden" href="#">Выход</a>
+            <a class="links-hidden" href="{% url 'auth:profile_edit' %}">Изменить баллы</a>
+            <a class="links-hidden" href="{% url 'auth:password_change' %}">Сменить пароль</a>
+            <a class="links-hidden" href="{% url 'auth:logout' %}">Выход</a>
         </div>
     </div>
     {% else %}
-    <li class="nav-item d-flex align-items-center"><a type='button' href="#" class="{% if view_name == 'users:signup' %}nav-link active disabled{% else %} btn btn-primary  {% endif %}">Регистрация</a></li>
-    <li class="nav-item d-flex align-items-center"><a type='button' href="#" class="{% if view_name == 'users:login' %}nav-link active disabled{% else %} btn btn-outline-dark me-2 {% endif %}">Вход</a></li>
+    <li class="nav-item d-flex align-items-center"><a type='button' href="{% url 'auth:signup' %}" class="{% if view_name == 'users:signup' %}nav-link active disabled{% else %} btn btn-primary  {% endif %}">Регистрация</a></li>
+    <li class="nav-item d-flex align-items-center"><a type='button' href="{% url 'auth:login' %}" class="{% if view_name == 'users:login' %}nav-link active disabled{% else %} btn btn-outline-dark me-2 {% endif %}">Вход</a></li>
     {% endif %}
 {% endwith %}
   </header>
