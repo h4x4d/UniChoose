@@ -96,12 +96,4 @@ class APIDislike(APIView):
         relation.strength = -1
         relation.save()
 
-        preference = user.preference
-        weighted = department.weighted
-
-        preference.vuz_rating -= weighted.vuz_rating * 0.1
-        preference.entry_score -= weighted.entry_score * 0.1
-        preference.edu_level -= weighted.edu_level * 0.1
-        preference.user = user
-
         return Response({'success': True})
