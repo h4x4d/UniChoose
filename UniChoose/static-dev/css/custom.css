@@ -65,6 +65,7 @@ main{
     margin:0%;
     background-color: #242141;
     color: white;
+    transition: border-bottom-left-radius 0.1s ease-in 0.3s, border-bottom-right-radius 0s ease-in 0.3s;
 
  }
  .dropdown-menu {
@@ -74,20 +75,24 @@ main{
     border: 0px;
  }
  .menu-content {
-    display: none;
     position: absolute;
     background-color: #242141;
     border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 10px    ;
+    border-bottom-right-radius: 10px;
     min-width: 212px;
     z-index: 1;
     text-align: center;
+    max-height: 0;
+    transition: max-height 0.3s ease-out, border-bottom-left-radius 1s;
+    overflow: hidden;
  }
  .links,.links-hidden{
     display: inline-block;
     color: rgb(255, 255, 255);
     padding: 12px 16px;
     text-decoration: none;
+    pointer-events: none;
+    cursor: default;
  }
  .links-hidden{
     display: inline-block;
@@ -113,12 +118,20 @@ main{
 }
  .dropdown-menu:hover .menu-content {
     display: block;
+    max-height: 300px;
+    transition: max-height 0.3s ease-in;
+ }
+ .dropdown-menu:hover .links,.links-hidden{
+    pointer-events: auto;
+    cursor: pointer;
  }
  .dropdown-menu:hover .menu-btn {
     background-color: #242141;
     border-color: #242141;
     border-bottom-left-radius: 0%;
     border-bottom-right-radius: 0%;
+    transition: border-bottom-left-radius 0s ease-in, border-bottom-right-radius 0s ease-in;
+
  }
  /* texts */
  .display-5{
