@@ -14,20 +14,19 @@ function appendNewCard() {
     const request = new Request('/api/preference/');
     fetch(request).then(response => {
         response.json().then(r => {
-            const card = new Card({
+            window.card = new Card({
                 department: r['results'][0],
                 onDismiss: appendNewCard,
                 onLike: like_func,
                 onDislike: dislike_func
             });
-            swiper.append(card.element);
+            swiper.append(window.card.element);
 
         })
 
     })
 
     cardCount++;
-    console.log(cardCount)
 
     const cards = swiper.querySelectorAll('.card:not(.dismissing)');
     cards.forEach((card, index) => {
