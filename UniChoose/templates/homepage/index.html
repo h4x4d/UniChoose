@@ -8,18 +8,22 @@
     <div class="container">
         {% if user.is_authenticated %}
             <div class="row align-items-center justify-content-center">
-                <div class="col">
-                    <ion-icon id="dislike" name="heart-dislike"></ion-icon>
-
-                </div>
-                <div class="col">
+                <div class="d-flex justify-content-center">
                     <div id="swiper">
                     </div>
 
                 </div>
-                <div class="col justify-content-center align-items-center">
-                    <ion-icon id="like" name="heart"></ion-icon>
+            </div>
+            <div class="row align-items-center justify-content-center">
 
+                <div class="col-2 d-flex justify-content-center">
+                    <ion-icon id="dislike" onclick="dislike_button()"
+                              name="heart-dislike-outline"></ion-icon>
+
+                </div>
+                <div class="col-2 d-flex justify-content-center">
+                    <ion-icon id="like" onclick="like_button()" name="heart-outline">
+                    </ion-icon>
                 </div>
             </div>
 
