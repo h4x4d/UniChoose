@@ -19,7 +19,6 @@ class Card {
     }
 
     // private properties
-    #startPoint;
     #offsetX;
     #offsetY;
 
