@@ -9,7 +9,7 @@ def nearest_filter(departments, user, amount=2):
 
     for department in WeightedDepartment.objects.filter(
             department__in=departments):
-        data = (float(department.entry_score) * (10**-1),
+        data = (float(department.entry_score) * 1,
                 float(department.profile) * (10**-4),
                 float(department.vuz_rating), float(department.edu_level) * 10)
 
