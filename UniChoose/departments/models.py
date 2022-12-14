@@ -14,7 +14,9 @@ class Department(CoreNameModel):
     )
     entry_score = models.PositiveSmallIntegerField(
         verbose_name='minimal entry exam score',
-        validators=(MaxValueValidator(311), ),
+        validators=(
+            MaxValueValidator(311),
+        ),
     )
     edu_level = models.PositiveSmallIntegerField(
         verbose_name='education level')
