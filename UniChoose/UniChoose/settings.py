@@ -1,5 +1,6 @@
 import os
 from pathlib import Path
+
 from django.urls import reverse_lazy
 
 if os.getenv('DEVELOP', 1):
