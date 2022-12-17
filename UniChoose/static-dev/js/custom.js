@@ -22,38 +22,5 @@ if (new_password2_input){
 };
 email_input = document.getElementById("id_email")
 if (email_input){
-  email_input.placeholder = "Адресс электронной почты"
-}
-
-
-// cards
-const cards = document.getElementsByClassName("card-group");
-
-const handleLikeClick = () => {
-    const nextIndex = activeIndex + 1;
-
-    const currentCard = document.querySelector(`[data-index="${activeIndex}"]`),
-        nextCard = document.querySelector(`[data-index="${nextIndex}"]`)
-    
-    
-    currentCard.dataset.status = "inactive"
-
-    setTimeout(() => {
-    nextCard.dataset.status = "active";
-    activeIndex = nextIndex;
-  });
-}
-const handleDislikeClick = () => {
-    const nextIndex = activeIndex + 1;
-
-    const currentCard = document.querySelector(`[data-index="${activeIndex}"]`),
-        nextCard = document.querySelector(`[data-index="${nextIndex}"]`)
-    
-    
-    currentCard.dataset.status = "inactive"
-
-    setTimeout(() => {
-    nextCard.dataset.status = "active";
-    activeIndex = nextIndex;
-  });
+  email_input.placeholder = "Адрес электронной почты"
 }
