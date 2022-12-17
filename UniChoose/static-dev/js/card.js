@@ -46,6 +46,10 @@ class Card {
         name_field.innerText = this.department['name'] + '\n' + this.department['profile_class']
         card.append(name_field);
 
+        const profile_field = document.createElement('h5');
+        profile_field.innerText = 'Профиль: ' + this.department['profile']
+        card.append(profile_field);
+
         const entry_field = document.createElement('h4');
         entry_field.innerText = 'Проходной балл: ' + this.department['entry_score'] + '\n(' + this.department['ege_subjects'].join(', ') + ')'
         card.append(entry_field);

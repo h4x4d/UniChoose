@@ -79,6 +79,7 @@ class APILike(APIView):
                                     preference.edu_level) / 2
             preference.profile = weighted.profile
             preference.user = user
+        preference.save()
 
         return Response({'success': True})
 

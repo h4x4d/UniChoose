@@ -12,7 +12,7 @@ class LikedDepartments(ListView):
     template_name = 'departments/index.html'
 
     def get_queryset(self, account: Account):
-        return account.liked_dpts.all()
+        return [rel.department for rel in account.relations.filter(strength=1)]
 
     def get(self, request):
         context = {
