@@ -65,6 +65,7 @@ main{
     margin:0%;
     background-color: #242141;
     color: white;
+    transition: border-bottom-left-radius 0.1s ease-in 0.3s, border-bottom-right-radius 0s ease-in 0.3s;
 
  }
  .dropdown-menu {
@@ -74,20 +75,24 @@ main{
     border: 0px;
  }
  .menu-content {
-    display: none;
     position: absolute;
     background-color: #242141;
     border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 10px    ;
+    border-bottom-right-radius: 10px;
     min-width: 212px;
     z-index: 1;
     text-align: center;
+    max-height: 0;
+    transition: max-height 0.3s ease-out, border-bottom-left-radius 1s;
+    overflow: hidden;
  }
  .links,.links-hidden{
     display: inline-block;
     color: rgb(255, 255, 255);
     padding: 12px 16px;
     text-decoration: none;
+    pointer-events: none;
+    cursor: default;
  }
  .links-hidden{
     display: inline-block;
@@ -113,12 +118,20 @@ main{
 }
  .dropdown-menu:hover .menu-content {
     display: block;
+    max-height: 300px;
+    transition: max-height 0.3s ease-in;
+ }
+ .dropdown-menu:hover .links,.links-hidden{
+    pointer-events: auto;
+    cursor: pointer;
  }
  .dropdown-menu:hover .menu-btn {
     background-color: #242141;
     border-color: #242141;
     border-bottom-left-radius: 0%;
     border-bottom-right-radius: 0%;
+    transition: border-bottom-left-radius 0s ease-in, border-bottom-right-radius 0s ease-in;
+
  }
  /* texts */
  .display-5{
@@ -142,33 +155,58 @@ main{
     width: 600px;
 }
 .dep-card-header{
+    display: flex;
+    align-items: center;
     padding:10px;
     background: #242141;
     color: white;
     border-radius: 7px;
-    border-bottom: #242141 2px solid;
 }
 .dep-card-title{
     font-weight: bold;
     font-size: 18px;
 }
 .dep-card-subheader{
-    /* background: #f4edfd; */
     padding:10px;
     color:#242141;
 }
 .dep-card-subtitle{
+    display: flex;
     font-size: 14px;
     visibility: 0;
+    align-items: center;
+}
+.dep-card-subtitle > span{
+    display: inline-block;
+    background-color: #6b5ed7;
+    color: #ffffff;
+    width: 0px;
+    border-radius: 4px;
+    margin-right: 8px;
+    margin-top: 0;
+    outline:#6b5ed7 2px solid;
+    transition: width 0.3s ease-in, padding 0.3s ease-in;
+}
+.dep-card-subheader:hover > .dep-card-subtitle > span{
+    width:100px;
+    padding-left: 5px;
+    transition: width 0.3s ease-in, padding 0.3s ease-in;
 }
 .dep-card-main{
-    border-top: #242141 2px solid;
+    border-top: #242141 1px solid;
     display:flex;
+    justify-content: space-between;
     padding: 10px;
 }
 .dep-card-score{
     display: flex;
     justify-content: space-around;
+}
+.dep-card-main-exams > p{
+    font-size: 20px;
+}
+.dep-card-score > p{
+    font-size: 20px;
 }
 .pie {
     --w:70px;
@@ -192,15 +230,7 @@ main{
     -webkit-mask:radial-gradient(farthest-side,#0000 calc(99% - var(--b)),#000 calc(100% - var(--b)));
             mask:radial-gradient(farthest-side,#0000 calc(99% - var(--b)),#000 calc(100% - var(--b)));
   }
-.card{
-    width:auto;
-}
-.card[data-status="inactive"]{
-    display: none;
-}
-.card[data-status="active"]{
-    display: flex;
-}
+
 /* forms */
 .form-label{
     display: none;
@@ -241,4 +271,73 @@ input::placeholder{
 }
 .flex-direction-column{
     flex-direction: column;
+}
+
+/* mobile stuff */
+
+@media screen and (max-width: 980px) {
+    .header-desktop{
+        display: none !important;
+    }
+    .header-mobile{
+        display: flex;
+    }
+}
+@media screen and (min-width: 981px) {
+    .header-desktop{
+        display: flex;
+    }
+    .header-mobile{
+        display: none !important;
+    }
+}
+.header-mobile{
+    display: flex;
+    justify-content: space-between;
+    height: 80px;
+    width: 100%;
+}
+.nav-toggle-btn{
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+.nav-toggle-btn > img {
+    color: #242141;
+    filter: invert(10%) sepia(39%) saturate(1576%) hue-rotate(215deg) brightness(94%) contrast(91%);
+}
+
+#NavToggle:checked ~ .mobile-nav{
+    max-height: calc(100vh - 60px);
+    visibility: visible;
+    padding-bottom: 15px;
+    transition: max-height 0.3s ease-in;
+}
+#NavToggle:checked ~ .mobile-nav > .nav-item{
+    margin: 10px;
+    transition: margin 0.3s ease-in;
+}
+#NavToggle{
+    display: none
+}
+.mobile-nav > .nav-item{
+    margin: -20px;
+    transition: margin 0.3s ease-in;
+}
+.mobile-nav{
+    display: flex;
+    align-items: center;
+    text-align: center;
+    flex-direction: column;
+    position: fixed;
+    top: 80px;
+    left: 0;
+    width: 100%;
+    max-height: 0px;
+    visibility: hidden;
+    overflow: hidden;
+    z-index: 3;
+    background: #ffffff;
+    transition: max-height 0.3s ease-in, visibility 0s 0.3s;
+    box-shadow: 0 4px 2px -2px #242141;
 }
