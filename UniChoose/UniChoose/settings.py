@@ -1,6 +1,8 @@
 import os
 from pathlib import Path
 
+from django.urls import reverse_lazy
+
 if os.getenv('DEVELOP', 1):
     from dotenv import load_dotenv
 
@@ -27,6 +29,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'debug_toolbar',
     'rest_framework',
+    'crispy_forms',
+    'crispy_bootstrap5',
     'homepage.apps.HomepageConfig',
     'departments.apps.DepartmentsConfig',
     'about.apps.AboutConfig',
@@ -115,12 +119,15 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     BASE_DIR / 'static-dev',
 ]
+
 STATIC_ROOT = BASE_DIR / 'static/'
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media/'
 
+LOGIN_URL = reverse_lazy('auth:login')
 AUTH_USER_MODEL = 'users.Account'
+LOGIN_REDIRECT_URL = 'homepage:home'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
@@ -131,3 +138,11 @@ REST_FRAMEWORK = {
     'LimitOffsetPagination',
     'PAGE_SIZE': 10,
 }
+
+CRISPY_ALLOWED_TEMPLATE_PACKS = 'bootstrap5'
+
+CRISPY_TEMPLATE_PACK = 'bootstrap5'
+
+EMAIL_BACKEND = 'django.core.mail.backends.filebased.EmailBackend'
+EMAIL_FILE_PATH = BASE_DIR / 'sent_emails'
+

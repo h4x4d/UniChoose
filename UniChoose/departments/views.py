@@ -10,6 +10,7 @@ class LikedDepartments(ListView):
     # ! Haven't tested this view yet
 
     template_name = 'departments/index.html'
+    paginate_by = 10
 
     def get_queryset(self, account: Account):
         return [rel.department for rel in account.relations.filter(strength=1)]
