@@ -43,3 +43,14 @@ class EditProfileView(LoginRequiredMixin, FormView):
         kwargs = super().get_form_kwargs()
         kwargs.update({'instance': self.request.user})
         return kwargs
+
+
+class SelectSubjectsView(FormView):
+    template_name = 'INSERT TEMPLATE'
+    success_url = reverse_lazy('auth:login')
+    
+    def get(self, request):
+        if request.user.is_authenticated:
+            self.success_url = reverse_lazy('auth:profile')
+            
+        
