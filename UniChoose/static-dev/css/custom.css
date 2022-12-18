@@ -155,11 +155,13 @@ main{
     width: 600px;
 }
 .dep-card-header{
+    display: flex;
+    align-items: center;
     padding:10px;
     background: #242141;
     color: white;
     border-radius: 7px;
-    border-bottom: #242141 2px solid;
+    /* border-bottom: #242141 2px solid; */
 }
 .dep-card-title{
     font-weight: bold;
@@ -205,15 +207,6 @@ main{
     -webkit-mask:radial-gradient(farthest-side,#0000 calc(99% - var(--b)),#000 calc(100% - var(--b)));
             mask:radial-gradient(farthest-side,#0000 calc(99% - var(--b)),#000 calc(100% - var(--b)));
   }
-.card{
-    width:auto;
-}
-.card[data-status="inactive"]{
-    display: none;
-}
-.card[data-status="active"]{
-    display: flex;
-}
 /* forms */
 .form-label{
     display: none;
@@ -298,7 +291,9 @@ input::placeholder{
 #NavToggle{
     display: none
 }
-
+.mobile-nav > .nav-item{
+    margin: 10px;
+}
 .mobile-nav{
     display: flex;
     align-items: center;
@@ -312,8 +307,9 @@ input::placeholder{
     visibility: hidden;
     overflow: hidden;
     z-index: 3;
-    background: white;
-    border-bottom: #242141 2px solid;
-    border-radius: 20px;
-    transition: max-height 0.3s, visibility 0s 0.3s;
+    background: #ffffff;
+    /* border-bottom: #6b5ed7 2px solid;
+    border-radius: 20px; */
+    transition: max-height 0.3s ease-in, visibility 0s 0.3s;
+    box-shadow: 0 4px 2px -2px #242141;
 }
