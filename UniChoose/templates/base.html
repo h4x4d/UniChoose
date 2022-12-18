@@ -13,16 +13,18 @@
     <meta name="msapplication-TileColor" content="#da532c">
     {% block head %}
     {% endblock %}
-</head>
-<body>
-{% include "includes/header.html" %}
-<main>
-    {% block content %}
-        <p>Здесь должен был быть контент</p>
-    {% endblock %}
-</main>
-</body>
-<div class="d-flex align-items-center">
+    <meta name="viewport" content="width=device-width, initial-scale=0.7">
+  </head>
+  <body>
+    {% include "includes/header.html" %}
+    <main>
+      {% block content %}
+      <p>Здесь должен был быть контент</p>
+      {% endblock %}
+    </main>
+    <script src="{%static 'js/custom.js' %}"></script>
+  </body>
+  <div class="d-flex align-items-center">
     {% include "includes/footer.html" %}
-</div>
+  </div>
 </html>
