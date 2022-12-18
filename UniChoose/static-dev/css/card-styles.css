@@ -13,7 +13,7 @@ body {
 
 
 #swiper {
-    height: 30vh;
+    height: 40vh;
     width: 30vh;
     perspective: 1000px;
     perspective-origin: center 50%;
