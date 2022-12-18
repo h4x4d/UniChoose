@@ -16,6 +16,8 @@ haversine = "^2.7.0"
 annoy = "^1.17.1"
 djangorestframework = "^3.14.0"
 django-debug-toolbar = "^3.8.1"
+django-crispy-forms = "^1.14.0"
+crispy-bootstrap5 = "^0.7"
 
 
 [tool.poetry.group.dev.dependencies]

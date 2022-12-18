@@ -1,5 +1,7 @@
 annoy==1.17.1 
 asgiref==3.5.2 
+crispy-bootstrap5==0.7 
+django-crispy-forms==1.14.0 
 django-debug-toolbar==3.8.1 
 django==3.2.16 
 djangorestframework==3.14.0 
