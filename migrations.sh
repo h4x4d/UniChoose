@@ -10,5 +10,6 @@ done
 echo "PostgreSQL started"
 
 python UniChoose/manage.py migrate
+# docker compose exec web python -Xutf8 UniChoose/manage.py loaddata UniChoose/fixtures/fixture.json
 
 exec "$@"

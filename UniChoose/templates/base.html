@@ -1,14 +1,19 @@
 <!DOCTYPE html>
 {% load static %}
 <html lang="ru">
-  <head>
-    <title>unichoose</title>
+<head>
+    <title>{% block title %}unichoose{% endblock %}</title>
     <meta charset="UTF-8">
-    <link href='https://fonts.googleapis.com/css?family=Manrope' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Manrope'
+          rel='stylesheet'>
     <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
     <link rel="stylesheet" href="{% static 'css/custom.css' %}">
     <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static 'js/custom.js' %}"></script>
     <meta name="msapplication-TileColor" content="#da532c">
+    {% block head %}
+    {% endblock %}
+    <meta name="viewport" content="width=device-width, initial-scale=0.7">
   </head>
   <body>
     {% include "includes/header.html" %}
@@ -17,6 +22,9 @@
       <p>Здесь должен был быть контент</p>
       {% endblock %}
     </main>
-    {% include "includes/footer.html" %}
+    <script src="{%static 'js/custom.js' %}"></script>
   </body>
+  <div class="d-flex align-items-center">
+    {% include "includes/footer.html" %}
+  </div>
 </html>

@@ -1,22 +1,61 @@
 {% extends 'base.html' %}
-{% block content %}
 {% load static %}
-<div class="container">
-    <div class="row align-items-center">
-        <div class="col-md-6">
-          <h1 class="display-5", style="font-weight: 800">Подбери кафедру своей мечты прямо сейчас</h1>
-          <h3 class="display-7">Заполни информацию о себе и рассмотри множество специальностей разных ВУЗов, интересных именно тебе.</h4>
-            <div class="row">
-            <a href="#}" class="btn btn-primary" aria-current="page">Регистрация</a>
-            <a href="#" class="btn btn-outline-dark" aria-current="page">Вход</a>
+{% block head %}
+    <link rel="stylesheet" href="{% static 'css/card-styles.css' %}">
+{% endblock %}
+{% block content %}
+    {% load static %}
+    <div class="container">
+        {% if user.is_authenticated %}
+            <div class="row align-items-center justify-content-center">
+                <div class="d-flex justify-content-center">
+                    <div id="swiper">
+                    </div>
+
+                </div>
             </div>
-            <br><br>
-         </div>
-         <div class="col">
-            <img src="{% static 'media/home.svg' %}" alt="здесь должна была быть картинка" >
-          </div>
-    </div>
-    {{ time }}
-    {{ universities }}
-</div>
+            <div class="row align-items-center justify-content-center">
+
+                <div class="col-2 d-flex justify-content-center">
+                    <ion-icon id="dislike" onclick="dislike_button()"
+                              name="heart-dislike-outline"></ion-icon>
+
+                </div>
+                <div class="col-2 d-flex justify-content-center">
+                    <ion-icon id="like" onclick="like_button()" name="heart-outline">
+                    </ion-icon>
+                </div>
+            </div>
+
+
+            <script src="{% static 'js/buttons.js' %}"></script>
+            <script src="{% static 'js/card.js' %}"></script>
+            <script src="{% static 'js/script.js' %}"></script>
+            <script type="module"
+                    src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+            <script nomodule
+                    src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+        {% else %}
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <h1 class="display-5" style="font-weight: 800">Подбери
+                        кафедру своей мечты прямо сейчас</h1>
+                    <h3 class="display-7">Заполни информацию о себе и рассмотри
+                        множество специальностей разных ВУЗов, интересных
+                        именно тебе.</h3>
+                    <div class="row">
+                        <a href="#}" class="btn btn-primary"
+                           aria-current="page">Регистрация</a>
+                        <a href="#" class="btn btn-outline-dark"
+                           aria-current="page">Вход</a>
+                    </div>
+                    <br><br>
+                </div>
+                <div class="col">
+                    <img src="{% static 'media/home.svg' %}"
+                         alt="здесь должна была быть картинка">
+                </div>
+            </div>
+            </div>
+        {% endif %}
 {% endblock %}

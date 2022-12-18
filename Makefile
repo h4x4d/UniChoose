@@ -34,10 +34,25 @@ update:
 down:
 	docker compose down -v
 
-.PHONY: build
-build: update down
+.PHONY: create_migration
+create_migration:
+	docker compose exec web python -Xutf8 UniChoose/manage.py dumpdata departments users universities -o UniChoose/fixtures/fixture.json
+
+
+.PHONY: copy_migration
+copy_migration: create_migration
+	docker compose cp web:/code/UniChoose/fixtures/fixture.json /root/UniChoose/UniChoose/fixtures/fixture.json
+
+
+.PHONY: build-action
+build-action: copy_migration down
 	docker compose up -d --build
 
+
+.PHONY: build
+build: build-action
+	docker compose cp /root/UniChoose/UniChoose/fixtures/fixture.json  web:/code/UniChoose/fixtures/fixture.json
+
 .PHONY: up
-up: update
+up:
 	docker compose up -d --build

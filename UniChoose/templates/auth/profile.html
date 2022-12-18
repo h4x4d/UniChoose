@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class='container'>
+<div class='form-holder flex-direction-column'>
+<h5 class="display-5"> Ваша информация</h5>
+<h7 class="disply-7"> Имя пользователя: {{username}}</h7>
+<h7 class="disply-7"> Понравившихся университетов: {{liked_unis_count}}</h7>
+<h7 class="disply-7"> Понравившихся кафедр: {{liked_dpts_count}}</h7>
+<a type='button' class='btn btn-primary' href="{% url 'auth:profile_edit' %}">Изменить профиль</a>
+</div>
+</div>
+{% endblock content %}

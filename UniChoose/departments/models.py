@@ -1,7 +1,8 @@
-from core.models import CoreNameModel
-from departments.validators import validate_department_classification_format
 from django.core.validators import MaxValueValidator
 from django.db import models
+
+from core.models import CoreNameModel, WeightedModel
+from departments.validators import validate_department_classification_format
 from universities.models import University
 
 
@@ -14,7 +15,9 @@ class Department(CoreNameModel):
     )
     entry_score = models.PositiveSmallIntegerField(
         verbose_name='minimal entry exam score',
-        validators=(MaxValueValidator(311), ),
+        validators=(
+            MaxValueValidator(311),
+        ),
     )
     edu_level = models.PositiveSmallIntegerField(
         verbose_name='education level')
@@ -27,17 +30,7 @@ class Department(CoreNameModel):
         return self.name
 
 
-class WeightedDepartment(models.Model):
-    entry_score = models.IntegerField()
-    vuz_rating = models.DecimalField(
-        verbose_name='average rating',
-        max_digits=3,
-        decimal_places=1,
-        validators=(MaxValueValidator(10.0), ),
-    )
-    edu_level = models.IntegerField()
-    profile = models.IntegerField()
-
+class WeightedDepartment(WeightedModel):
     department = models.OneToOneField(Department,
                                       on_delete=models.CASCADE,
                                       related_name='weighted')

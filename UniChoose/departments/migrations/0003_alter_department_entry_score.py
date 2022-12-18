@@ -14,6 +14,7 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='department',
             name='entry_score',
+
             field=models.PositiveSmallIntegerField(
                 validators=[django.core.validators.MaxValueValidator(311)],
                 verbose_name='minimal entry exam score'),
