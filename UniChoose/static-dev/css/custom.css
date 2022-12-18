@@ -161,29 +161,52 @@ main{
     background: #242141;
     color: white;
     border-radius: 7px;
-    /* border-bottom: #242141 2px solid; */
 }
 .dep-card-title{
     font-weight: bold;
     font-size: 18px;
 }
 .dep-card-subheader{
-    /* background: #f4edfd; */
     padding:10px;
     color:#242141;
 }
 .dep-card-subtitle{
+    display: flex;
     font-size: 14px;
     visibility: 0;
+    align-items: center;
+}
+.dep-card-subtitle > span{
+    display: inline-block;
+    background-color: #6b5ed7;
+    color: #ffffff;
+    width: 0px;
+    border-radius: 4px;
+    margin-right: 8px;
+    margin-top: 0;
+    outline:#6b5ed7 2px solid;
+    transition: width 0.3s ease-in, padding 0.3s ease-in;
+}
+.dep-card-subheader:hover > .dep-card-subtitle > span{
+    width:100px;
+    padding-left: 5px;
+    transition: width 0.3s ease-in, padding 0.3s ease-in;
 }
 .dep-card-main{
-    border-top: #242141 2px solid;
+    border-top: #242141 1px solid;
     display:flex;
+    justify-content: space-between;
     padding: 10px;
 }
 .dep-card-score{
     display: flex;
     justify-content: space-around;
+}
+.dep-card-main-exams > p{
+    font-size: 20px;
+}
+.dep-card-score > p{
+    font-size: 20px;
 }
 .pie {
     --w:70px;
@@ -286,13 +309,19 @@ input::placeholder{
 #NavToggle:checked ~ .mobile-nav{
     max-height: calc(100vh - 60px);
     visibility: visible;
+    padding-bottom: 15px;
     transition: max-height 0.3s ease-in;
+}
+#NavToggle:checked ~ .mobile-nav > .nav-item{
+    margin: 10px;
+    transition: margin 0.3s ease-in;
 }
 #NavToggle{
     display: none
 }
 .mobile-nav > .nav-item{
-    margin: 10px;
+    margin: -20px;
+    transition: margin 0.3s ease-in;
 }
 .mobile-nav{
     display: flex;
@@ -308,8 +337,6 @@ input::placeholder{
     overflow: hidden;
     z-index: 3;
     background: #ffffff;
-    /* border-bottom: #6b5ed7 2px solid;
-    border-radius: 20px; */
     transition: max-height 0.3s ease-in, visibility 0s 0.3s;
     box-shadow: 0 4px 2px -2px #242141;
 }

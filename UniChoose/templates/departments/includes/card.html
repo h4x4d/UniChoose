@@ -5,8 +5,8 @@
         </div>
     </div>
     <div class="dep-card-subheader">
-        <p class="dep-card-subtitle">{{dep.profile}}</p>
-        <p class="dep-card-subtitle">{{dep.university}}</p>
+        <p class="dep-card-subtitle"><span>Профиль</span> {{dep.profile}}</p>
+        <p class="dep-card-subtitle"><span>Направление</span> {{dep.university}}</p>
     </div>
     <div class="dep-card-main">
         <div class="dep-card-main-exams">
@@ -24,7 +24,7 @@
             {% endfor %}
         </div>
         <div class="dep-card-score">
-            Минимум баллов:
+            <p>Баллы:</p>
             <div class="pie" style="--p:calc(({{dep.entry_score}} / 311) * 100);--b:10px;">
                 {{dep.entry_score}} 
             </div>
