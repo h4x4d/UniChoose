@@ -230,6 +230,7 @@ main{
     -webkit-mask:radial-gradient(farthest-side,#0000 calc(99% - var(--b)),#000 calc(100% - var(--b)));
             mask:radial-gradient(farthest-side,#0000 calc(99% - var(--b)),#000 calc(100% - var(--b)));
   }
+
 /* forms */
 .form-label{
     display: none;

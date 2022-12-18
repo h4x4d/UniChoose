@@ -23,4 +23,3 @@ if (new_password2_input){
 email_input = document.getElementById("id_email")
 if (email_input){
   email_input.placeholder = "Адрес электронной почты"
-}
