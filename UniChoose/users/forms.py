@@ -47,15 +47,12 @@ class EditProfileForm(UserChangeForm):
 class SubjectsSelectionForm(forms.Form):
 
     def __init__(self):
+        super().__init__()
+
         for name, placeholder in zip(subjects_attr_names,
                                      subjects_attr_placeholders):
-            setattr(
-                self, name,
-                forms.IntegerField(
-                    widget=forms.NumberInput(
-                        attrs={'placeholder': placeholder}),
-                    validators=[MinValueValidator(0),
-                                MaxValueValidator(100)],
-                    required=False))
-
-        super().__init__()
+            self.fields[name] = forms.IntegerField(
+                widget=forms.NumberInput(attrs={'placeholder': placeholder}),
+                validators=[MinValueValidator(0),
+                            MaxValueValidator(100)],
+                required=False)
