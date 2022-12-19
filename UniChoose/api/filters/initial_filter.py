@@ -16,14 +16,10 @@ def initial_filter(user):
     user_id = user.id
 
     departments = []
-
-    queryset = (Department.objects.prefetch_related('relations').filter(
-        university__in=universities).order_by('entry_score',
-                                              'university__avg_rating'))
-
-    for department in queryset:
-        if departments_checker(queryset, user_subjects, user_marks, user_id,
-                               department):
+    for department in Department.objects.filter(
+            university__in=universities).order_by('entry_score',
+                                                  'university__avg_rating'):
+        if departments_checker(user_subjects, user_marks, user_id, department):
             departments.append(department)
 
     return departments

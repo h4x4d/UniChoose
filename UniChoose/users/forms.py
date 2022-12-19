@@ -36,7 +36,7 @@ class SignUpForm(forms.ModelForm):
 class EditProfileForm(UserChangeForm):
     password = None
 
-    class Meta():
+    class Meta:
         model = Account
         fields = ('username', )
         exclude = ('password', )

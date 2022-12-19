@@ -1,8 +1,4 @@
-from django.db.models import Q
-
-
-def departments_checker(queryset, user_subjects, user_marks, user_id,
-                        department):
+def departments_checker(user_subjects, user_marks, user_id, department):
     mark = 0
     for subject in department.ege_subjects:
         if type(subject) == list:
@@ -23,12 +19,7 @@ def departments_checker(queryset, user_subjects, user_marks, user_id,
                 mark += user_marks[user_subjects.index(subject)]
 
     if mark >= department.entry_score:
-        try:
-            queryset.get(
-                Q(relations__department__id=department.id)
-                & Q(relations__account__id=user_id))
+        if user_id in [rel.account_id for rel in department.relations.all()]:
             return False
-        except Exception:
-            return True
-
+        return True
     return False
