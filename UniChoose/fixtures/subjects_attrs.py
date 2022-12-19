@@ -1,0 +1,28 @@
+subjects_attr_names = [
+    'mark_informatics',
+    'mark_math',
+    'mark_russian',
+    'mark_social',
+    'mark_foreign',
+    'mark_biology',
+    'mark_geography',
+    'mark_chemistry',
+    'mark_physics',
+    'mark_literature',
+    'mark_history',
+    'mark_additional',
+]
+subjects_attr_placeholders = [
+    'Информатика',
+    'Математика',
+    'Русский язык',
+    'Обществознание',
+    'Иностранный язык',
+    'Биология',
+    'География',
+    'Химия',
+    'Физика',
+    'Литература',
+    'История',
+    'Доп. баллы',
+]
