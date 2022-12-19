@@ -1,5 +1,6 @@
-from departments.views import LikedDepartments
 from django.urls import path
+
+from departments.views import LikedDepartments
 
 app_name = 'departments'
 

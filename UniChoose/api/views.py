@@ -1,8 +1,8 @@
+from django.db.models import Prefetch
 from rest_framework import viewsets
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.views import APIView
-from django.db.models import Prefetch
 
 from api.filters.initial_filter import initial_filter
 from api.filters.nearest_filter import nearest_filter

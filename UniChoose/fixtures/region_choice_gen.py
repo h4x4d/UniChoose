@@ -1,5 +1,4 @@
 import json
-from operator import itemgetter
 
 with open('address_fixture.json', 'r', encoding='utf-8') as file:
     addresses = json.load(file)
