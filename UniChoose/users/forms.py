@@ -1,7 +1,6 @@
 from django import forms
 from django.contrib.auth.forms import UserChangeForm
 from users.models import Account
-from fixtures.region_choice_field_fixture import region_choices
 from django.core.validators import MaxValueValidator, MinValueValidator
 
 
@@ -46,41 +45,39 @@ class EditProfileForm(UserChangeForm):
 
 
 class SubjectsSelectionForm(forms.Form):
-    region = forms.ChoiceField(
-        choices=region_choices, required=True, label='Ваш регион')
     mark_informatics = forms.IntegerField(
         widget=forms.NumberInput(attrs={'placeholder': 'Информатика'}),
-        validators=[MinValueValidator(0), MaxValueValidator(100)])
+        validators=[MinValueValidator(0), MaxValueValidator(100)], required=False)
     mark_math = forms.IntegerField(
         widget=forms.NumberInput(attrs={'placeholder': 'Математика'}),
-        validators=[MinValueValidator(0), MaxValueValidator(100)])
+        validators=[MinValueValidator(0), MaxValueValidator(100)], required=False)
     mark_russian = forms.IntegerField(
         widget=forms.NumberInput(attrs={'placeholder': 'Русский язык'}),
-        validators=[MinValueValidator(0), MaxValueValidator(100)])
+        validators=[MinValueValidator(0), MaxValueValidator(100)], required=False)
     mark_social = forms.IntegerField(
         widget=forms.NumberInput(attrs={'placeholder': 'Обществознание'}),
-        validators=[MinValueValidator(0), MaxValueValidator(100)])
+        validators=[MinValueValidator(0), MaxValueValidator(100)], required=False)
     mark_foreign = forms.IntegerField(
         widget=forms.NumberInput(attrs={'placeholder': 'Иностранный язык'}),
-        validators=[MinValueValidator(0), MaxValueValidator(100)])
+        validators=[MinValueValidator(0), MaxValueValidator(100)], required=False)
     mark_biology = forms.IntegerField(
         widget=forms.NumberInput(attrs={'placeholder': 'Биология'}),
-        validators=[MinValueValidator(0), MaxValueValidator(100)])
+        validators=[MinValueValidator(0), MaxValueValidator(100)], required=False)
     mark_geography = forms.IntegerField(
         widget=forms.NumberInput(attrs={'placeholder': 'География'}),
-        validators=[MinValueValidator(0), MaxValueValidator(100)])
+        validators=[MinValueValidator(0), MaxValueValidator(100)], required=False)
     mark_chemistry = forms.IntegerField(
         widget=forms.NumberInput(attrs={'placeholder': 'Химия'}),
-        validators=[MinValueValidator(0), MaxValueValidator(100)])
+        validators=[MinValueValidator(0), MaxValueValidator(100)], required=False)
     mark_physics = forms.IntegerField(
         widget=forms.NumberInput(attrs={'placeholder': 'Физика'}),
-        validators=[MinValueValidator(0), MaxValueValidator(100)])
+        validators=[MinValueValidator(0), MaxValueValidator(100)], required=False)
     mark_literature = forms.IntegerField(
         widget=forms.NumberInput(attrs={'placeholder': 'Литература'}),
-        validators=[MinValueValidator(0), MaxValueValidator(100)])
+        validators=[MinValueValidator(0), MaxValueValidator(100)], required=False)
     mark_history = forms.IntegerField(
         widget=forms.NumberInput(attrs={'placeholder': 'История'}),
-        validators=[MinValueValidator(0), MaxValueValidator(100)])
+        validators=[MinValueValidator(0), MaxValueValidator(100)], required=False)
     mark_additional = forms.IntegerField(
         widget=forms.NumberInput(attrs={'placeholder': 'Доп. баллы'}),
-        validators=[MinValueValidator(0), MaxValueValidator(100)])
+        validators=[MinValueValidator(0), MaxValueValidator(100)], required=False)

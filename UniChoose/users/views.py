@@ -3,8 +3,9 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views.generic import FormView, View
-from users.forms import EditProfileForm, SignUpForm
+from users.forms import EditProfileForm, SignUpForm, SubjectsSelectionForm
 from users.models import Account
+from fixtures.regions_fixture import regions
 
 # ! These are not finished probably
 
@@ -45,12 +46,23 @@ class EditProfileView(LoginRequiredMixin, FormView):
         return kwargs
 
 
-class SelectSubjectsView(FormView):
-    template_name = 'INSERT TEMPLATE'
+class SelectSubjectsView(View):
+    template_name = 'auth/select_subjects.html'     # ! Update the template
     success_url = reverse_lazy('auth:login')
-    
+
     def get(self, request):
         if request.user.is_authenticated:
             self.success_url = reverse_lazy('auth:profile')
+
+        form = SubjectsSelectionForm()
+
+        context = {
+            'form': form,
+            'regions': regions,
+        }
+
+        return render(request, self.template_name, context)
+
+    def post(self, request):
+        if request.user.is_authenticated:
             
-        
