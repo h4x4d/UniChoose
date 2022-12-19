@@ -112,7 +112,6 @@ class Card {
         e.preventDefault();
         if (!this.startPoint) return;
         const {clientX, clientY} = e;
-        console.log(clientX)
         this.handleMove(clientX, clientY);
     }
 
