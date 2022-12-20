@@ -42,7 +42,9 @@ class EditProfileForm(UserChangeForm):
         fields = ('username', )
         exclude = ('password', )
 
-        widgets = {}
+        labels = {
+            'username': 'Имя',
+        }
 
 
 class SubjectsSelectionForm(forms.Form):

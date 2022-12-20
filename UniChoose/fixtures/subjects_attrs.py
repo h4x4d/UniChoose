@@ -13,7 +13,7 @@ subjects_attr_names = [
     'mark_additional',
 ]
 subjects_attr_placeholders = [
-    'Информатика',
+    'ИКТ',
     'Математика',
     'Русский язык',
     'Обществознание',
