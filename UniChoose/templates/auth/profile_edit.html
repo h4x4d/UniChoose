@@ -1,20 +1,29 @@
 {% extends 'base.html' %}
+
 {% block content %}
-    <div class="container d-flex align-items-center justify-content-center">
-        <div class="form-holder">
-            <form method="POST">
-                <h5 class='display-5'>Изменить профиль</h5>
-                {% load crispy_forms_tags %}
-                {% csrf_token %}
-                {% for field in form %}
-                    {{ field|as_crispy_field }}
-                {% endfor %}
-                <div class="row form-btn-holder">
-                    <button type="submit" class="btn btn-primary btn-wide">
-                        Готово
-                    </button>
-                </div>
-            </form>
+<div class="container d-flex align-items-center justify-content-center">
+    <div class="form-holder">
+    <form method="POST">
+        <h5 class="display-5">Изменить профиль</h5>
+        {% load crispy_forms_tags %}
+        
+        {% csrf_token %}
+        {% for field in form %}
+        {{field|as_crispy_field}}
+        {% endfor %}
+        <input class="form-control" list="datalistOptions" id="exampleDataList" placeholder="Выберите регион..." value="{{ user_region }}">
+        <datalist id="datalistOptions">
+            {% for region in regions %}
+            <option hidden="hidden" value="{{ region }}"></option>
+            {% endfor %}
+        </datalist>
+        {% for field in subject_form %}
+        {{field|as_crispy_field}}
+        {% endfor %}
+        
+        <div class="row form-btn-holder">
+        <button type="submit" class="btn btn-primary btn-wide">Готово</button>
         </div>
-    </div>
-{% endblock %}
+    </form>
+</div>
+{%endblock%}

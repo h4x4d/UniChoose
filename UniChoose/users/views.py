@@ -6,7 +6,7 @@ from django.views.generic import FormView, View
 
 from fixtures.regions_fixture import regions
 from users.forms import EditProfileForm, SignUpForm, SubjectsSelectionForm
-from users.models import Account
+from users.models import Account, Subject
 
 # ! These are not finished probably
 
@@ -41,6 +41,19 @@ class EditProfileView(LoginRequiredMixin, FormView):
     success_url = reverse_lazy('auth:profile')
     form_class = EditProfileForm
 
+    def get_context_data(self, **kwargs):
+        context = super(EditProfileView, self).get_context_data(**kwargs)
+
+        subject_form = SubjectsSelectionForm()
+
+        context['regions'] = regions
+        context['subject_form'] = subject_form
+
+        return context
+
+    def post(self, request):
+        pass
+
     def get_form_kwargs(self):
         kwargs = super().get_form_kwargs()
         kwargs.update({'instance': self.request.user})
@@ -66,4 +79,7 @@ class SelectSubjectsView(View):
 
     def post(self, request):
         if request.user.is_authenticated:
-            pass
+            request.user.update(region__name=request)
+            request.user.save()
+
+            # user_subjects = Subject.objects.filter(account__id=request.user.id)
