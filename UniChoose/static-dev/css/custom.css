@@ -257,7 +257,7 @@ input::placeholder{
     display: flex;
     align-items: center;
     justify-content: center;
-    min-width:500px;
+    min-width: 500px;
 }
 .form-btn-holder{
     margin-left: -5px;
