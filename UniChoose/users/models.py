@@ -4,7 +4,7 @@ from django.db import models
 
 from core.models import CoreNameModel, WeightedModel
 from departments.models import Department
-from universities.models import Region, University
+from universities.models import Region
 
 
 class Preference(WeightedModel):
@@ -14,12 +14,6 @@ class Preference(WeightedModel):
 
 
 class Account(AbstractUser):
-    liked_unis = models.ManyToManyField(University,
-                                        verbose_name='liked universities',
-                                        related_name='users')
-    liked_dpts = models.ManyToManyField(Department,
-                                        verbose_name='liked departments',
-                                        related_name='users')
     max_distance = models.IntegerField(default=1000)
 
     region = models.ForeignKey(Region,
