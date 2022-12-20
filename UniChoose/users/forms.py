@@ -2,6 +2,7 @@ from django import forms
 from django.contrib.auth.forms import UserChangeForm
 from django.core.validators import MaxValueValidator, MinValueValidator
 
+from fixtures.regions_fixture import regions_choice
 from fixtures.subjects_attrs import (subjects_attr_names,
                                      subjects_attr_placeholders)
 from users.models import Account
@@ -56,3 +57,8 @@ class SubjectsSelectionForm(forms.Form):
                 validators=[MinValueValidator(0),
                             MaxValueValidator(100)],
                 required=False)
+
+    region = forms.ChoiceField(choices=regions_choice)
+    region.initial = 'Выберите регион...'
+    region.widget.template_name = 'widgets/datalist.html'
+    region.widget.attrs = {'class': 'form-control'}

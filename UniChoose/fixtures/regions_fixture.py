@@ -79,3 +79,5 @@ regions = [
     'Чувашская Республика',
     'Ярославская область',
 ]
+
+regions_choice = [(i, i) for i in regions]
