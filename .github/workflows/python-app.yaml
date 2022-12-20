@@ -35,14 +35,9 @@ jobs:
         run: |
           flake8 . --count --show-source --statistics
 
-      - name: Test with unittest
-        run: |
-          cd UniChoose
-          python manage.py test
-        env:
-          DEVELOP: 1
-
       - name: Test with pytest
         run: |
           cd UniChoose
           pytest --alluredir=allure-results -s -v -n auto
+        env:
+          DEVELOP: 1
