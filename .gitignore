@@ -21,3 +21,7 @@ static/
 .vscode/
 .env-prod
 .env-prod.db
+
+allure-results/
+allure-report/
+.pytest_cache/

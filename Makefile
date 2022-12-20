@@ -56,3 +56,15 @@ build: build-action
 .PHONY: up
 up:
 	docker compose up -d --build
+
+.PHONY: clear
+clear:
+	cd ./UniChoose && rd /s /q "allure-results/"
+
+.PHONY: test
+test: clear
+	cd ./UniChoose && pytest --alluredir=allure-results -s -v
+
+.PHONY: generate
+generate: test
+	cd ./UniChoose && allure generate --clean

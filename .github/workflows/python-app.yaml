@@ -41,3 +41,8 @@ jobs:
           python manage.py test
         env:
           DEVELOP: 1
+
+      - name: Test with pytest
+        run: |
+          cd UniChoose
+          pytest --alluredir=allure-results -s -v -n auto
