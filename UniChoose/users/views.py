@@ -6,7 +6,7 @@ from django.views.generic import FormView, View
 
 from fixtures.regions_fixture import regions
 from users.forms import EditProfileForm, SignUpForm, SubjectsSelectionForm
-from users.models import Account, Subject
+from users.models import Account
 
 # ! These are not finished probably
 
@@ -81,5 +81,3 @@ class SelectSubjectsView(View):
         if request.user.is_authenticated:
             request.user.update(region__name=request)
             request.user.save()
-
-            # user_subjects = Subject.objects.filter(account__id=request.user.id)
