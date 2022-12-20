@@ -1,5 +1,5 @@
 <input list="{{ widget.name }}s"
-       name="{{ widget.name }}"{% include "django/forms/widgets/attrs.html" %}>
+       name="{{ widget.name }}"{% include "django/forms/widgets/attrs.html" %} placeholder="Выберите регион...">
 <datalist id="{{ widget.name }}s">
     {% for group_name, group_choices, group_index in widget.optgroups %}
         {% if group_name %}

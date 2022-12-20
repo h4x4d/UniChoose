@@ -63,4 +63,10 @@ class SubjectsSelectionForm(forms.Form):
     region = forms.ChoiceField(choices=regions_choice)
     region.initial = 'Выберите регион...'
     region.widget.template_name = 'widgets/datalist.html'
-    region.widget.attrs = {'class': 'form-control'}
+    region.widget.attrs = {
+        'class': 'form-control',
+        'placeholder': 'Выберите регион...',
+    }
+
+    max_distance = forms.IntegerField(min_value=0, max_value=10000)
+    max_distance.widget.attrs = {'placeholder': 'Максимальное расстояние'}

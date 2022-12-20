@@ -6,19 +6,21 @@
             <form method="POST">
                 {% load crispy_forms_tags %}
                 {% csrf_token %}
-                <input class="form-control" list="datalistOptions"
-                       id="exampleDataList" placeholder="Выберите регион...">
-                <datalist id="datalistOptions">
-                    {% for region in regions %}
-                        <option hidden="hidden" value="{{ region }}"></option>
-                    {% endfor %}
-                </datalist>
                 <div class='row signup-form-holder'>
                     {% for field in form %}
-                        {% if field %}
-                        <div class='col-md-2'>
-                            {{ field|as_crispy_field }}
-                        </div>
+                        {% if field.name == 'region' %}
+                            <div class='col-9'>
+                                {{ field|as_crispy_field }}
+                            </div>
+                        {% elif field.name == 'max_distance' %}
+                            <div class='col-3'>
+                                {{ field|as_crispy_field }}
+                            </div>
+                        {% else %}
+                            <div class='col-md-2'>
+                                {{ field|as_crispy_field }}
+                            </div>
+                        {% endif %}
                     {% endfor %}
                 </div>
                 <div class="form-btn-holder d-flex justify-content-center mt-2">
