@@ -47,8 +47,8 @@ class PreferenceViewSet(viewsets.ReadOnlyModelViewSet):
             departments = departments[:2]
 
         for department in departments:
-            relation = AccountDepartmentRelations(account=user,
-                                                  department=department,
+            relation = AccountDepartmentRelations(account_id=user.id,
+                                                  department_id=department,
                                                   strength=0)
             relation.save()
 
