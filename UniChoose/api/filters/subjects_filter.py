@@ -1,4 +1,5 @@
-def departments_checker(user_subjects, user_marks, user_id, department):
+def departments_checker(user_subjects, user_marks, user_id, department,
+                        user_relations):
     mark = 0
     for subject in department.ege_subjects:
         if type(subject) == list:
@@ -19,7 +20,7 @@ def departments_checker(user_subjects, user_marks, user_id, department):
                 mark += user_marks[user_subjects.index(subject)]
 
     if mark >= department.entry_score:
-        if user_id in [rel.account_id for rel in department.relations.all()]:
+        if [i for i in user_relations if i.department_id == department.id]:
             return False
         return True
     return False
