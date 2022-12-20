@@ -300,6 +300,9 @@ input::placeholder{
     .header-mobile{
         display: flex;
     }
+    .dep-card{
+        width: 96.5%
+    }
 }
 @media screen and (min-width: 981px) {
     .header-desktop{
@@ -307,6 +310,9 @@ input::placeholder{
     }
     .header-mobile{
         display: none !important;
+    }
+    .dep-card{
+        width: 600px;
     }
 }
 .header-mobile{
