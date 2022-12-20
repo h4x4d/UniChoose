@@ -13,7 +13,7 @@ from users.models import AccountDepartmentRelations, Preference
 
 class DepartmentViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = Department.objects.all().order_by('name'). \
-        prefetch_related(Prefetch('university',  to_attr='universities'))
+        prefetch_related(Prefetch('university', to_attr='universities'))
     serializer_class = DepartmentSerializer
 
     permission_classes = [IsAuthenticated]
@@ -46,6 +46,12 @@ class PreferenceViewSet(viewsets.ReadOnlyModelViewSet):
 
             departments = departments[:2]
 
+        for department in departments:
+            relation = AccountDepartmentRelations(account=user,
+                                                  department=department,
+                                                  strength=0)
+            relation.save()
+
         return Department.objects.filter(pk__in=departments)
 
 
@@ -56,9 +62,8 @@ class APILike(APIView):
         user = request.user
         department = Department.objects.get(pk=pk)
 
-        relation = AccountDepartmentRelations()
-        relation.account = user
-        relation.department = department
+        relation = AccountDepartmentRelations.objects.get(
+            account=user, department=department)
         relation.strength = 1
         relation.save()
 
@@ -92,9 +97,8 @@ class APIDislike(APIView):
         user = request.user
         department = Department.objects.get(pk=pk)
 
-        relation = AccountDepartmentRelations()
-        relation.account = user
-        relation.department = department
+        relation = AccountDepartmentRelations.objects.get(
+            account=user, department=department)
         relation.strength = -1
         relation.save()
 

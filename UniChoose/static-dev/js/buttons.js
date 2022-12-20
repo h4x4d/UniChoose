@@ -4,7 +4,7 @@ like_func = function (id) {
 
     const request = new Request('/api/like/' + id + '/');
 
-    return fetch(request)
+    fetch(request)
 
 };
 dislike_func = function (id) {
@@ -13,7 +13,7 @@ dislike_func = function (id) {
 
     const request = new Request('/api/dislike/' + id + '/');
 
-    return fetch(request)
+    fetch(request)
 
 };
 like_button = function () {

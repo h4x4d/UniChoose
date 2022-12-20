@@ -138,10 +138,10 @@ class Card {
 
     dismiss = (direction) => {
         if (typeof this.onLike === 'function' && direction === 1) {
-            const r = this.onLike(this.department.id);
+            this.onLike(this.department.id);
         }
         if (typeof this.onDislike === 'function' && direction === -1) {
-            const r = this.onDislike(this.department.id);
+            this.onDislike(this.department.id);
         }
         this.startPoint = null;
         document.removeEventListener('mouseup', this.#handleMoveUp);
