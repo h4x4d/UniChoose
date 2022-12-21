@@ -1,11 +1,8 @@
 import allure
-from hamcrest import assert_that, equal_to
+
+from tests.request_and_check import request
 
 
 @allure.title('Testing about page')
 def test_about_get(client):
-    with allure.step('Getting about page'):
-        response = client.get('/')
-    with allure.step('Asserting status'):
-        assert_that(response.status_code, equal_to(200),
-                    f'Expected code was 200, but got {response.status_code}')
+    request('/about/', 200, 'about', client)
