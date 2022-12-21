@@ -6,9 +6,10 @@ from django.views.generic import FormView, View
 
 from fixtures.regions_fixture import regions
 from users.forms import EditProfileForm, SignUpForm, SubjectsSelectionForm
-from users.models import Account, Subject
+from users.models import Account, Subject, AccountDepartmentRelations
 from universities.models import Region
 from fixtures.subjects_attrs import subjects_attr_names
+from django.core.exceptions import ValidationError
 
 # ! These are not finished probably
 
@@ -52,13 +53,54 @@ class EditProfileView(LoginRequiredMixin, FormView):
         return kwargs
 
 
-class SelectSubjectsView(View):
-    template_name = 'auth/select_subjects.html'  # ! Update the template
+class SelectSubjectsView(FormView):
+    template_name = 'auth/select_subjects.html'
     success_url = reverse_lazy('auth:login')
+    form_class = SubjectsSelectionForm
 
     def get(self, request):
         if request.user.is_authenticated:
             self.success_url = reverse_lazy('auth:profile')
+
+        form = self.get_form(request)
+
+        context = {
+            'form': form,
+            'regions': regions,
+        }
+
+        return render(request, self.template_name, context)
+
+    def post(self, request):
+        if self.form_valid(request):
+            account = Account.objects.filter(id=request.user.id)
+            account.update(max_distance=request.POST.get('max_distance'))
+
+            try:
+                account.update(region=Region.objects.get(
+                    name=request.POST.get('region')))
+            except Exception:
+                pass
+
+            inputted_marks = {}
+            for name in subjects_attr_names:
+                if request.POST.get(name) != '':
+                    inputted_marks[name] = request.POST.get(name)
+
+            for key in inputted_marks:
+                Subject.objects.update_or_create(
+                    account_id=request.user.id,
+                    name=key,
+                    defaults={
+                        'account': request.user,
+                        'name': key,
+                        'mark': inputted_marks[key],
+                    })
+
+            return redirect('auth:profile')
+
+    def get_form(self, request):
+        form = super().get_form(super().get_form_class())
 
         subject_form_initial = {
             'region': request.user.region.name,
@@ -76,36 +118,26 @@ class SelectSubjectsView(View):
 
         form = SubjectsSelectionForm(initial=subject_form_initial)
 
-        context = {
-            'form': form,
-            'regions': regions,
-        }
+        return form
 
-        return render(request, self.template_name, context)
-
-    def post(self, request):
-        account = Account.objects.filter(id=request.user.id)
-        account.update(max_distance=request.POST.get('max_distance'))
-
-        try:
-            account.update(region=Region.objects.get(
-                name=request.POST.get('region')))
-        except Exception:
-            pass
-
-        inputted_marks = {}
+    # ! might need to be rewritten to show form errors to user
+    def form_valid(self, request):
+        if int(request.POST.get('max_distance')) < 0:
+            raise ValidationError('Расстояние должно быть больше нуля')
+        if request.POST.get('region') not in regions:
+            raise ValidationError('Введите существующий регион')
         for name in subjects_attr_names:
-            if request.POST.get(name) != '':
-                inputted_marks[name] = request.POST.get(name)
+            if 0 <= int(request.POST.get(name)) <= 100:
+                raise ValidationError('Введите корректные баллы за экзамены')
+        return True
 
-        for key in inputted_marks:
-            Subject.objects.update_or_create(
-                account_id=request.user.id,
-                name=key,
-                defaults={
-                    'account': request.user,
-                    'name': key,
-                    'mark': inputted_marks[key],
-                })
 
-        return redirect('auth:profile')
+def delete_liked_departments(request):
+    AccountDepartmentRelations.objects.filter(
+        account_id=request.user.id).delete()
+    return redirect('auth:profile')
+
+
+def delete_recommendation_profile(request):
+    # ? which model should i delete
+    pass

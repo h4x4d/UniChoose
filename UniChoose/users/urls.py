@@ -4,7 +4,7 @@ from django.contrib.auth.views import (LoginView, LogoutView,
 from django.urls import path, reverse_lazy
 
 from users.views import (EditProfileView, ProfileView, SelectSubjectsView,
-                         SignUpFormView)
+                         SignUpFormView, delete_liked_departments)
 
 app_name = 'auth'
 
@@ -30,4 +30,6 @@ urlpatterns = [
     path('profile/', ProfileView.as_view(), name='profile'),
     path('profile/edit/', EditProfileView.as_view(), name='profile_edit'),
     path('profile/exam_info/', SelectSubjectsView.as_view(), name='edit_info'),
+    path('profile/delete/liked_departments',
+         delete_liked_departments, name='delete_dpts'),
 ]

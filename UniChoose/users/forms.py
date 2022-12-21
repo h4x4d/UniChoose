@@ -2,10 +2,11 @@ from django import forms
 from django.contrib.auth.forms import UserChangeForm
 from django.core.validators import MaxValueValidator, MinValueValidator
 
-from fixtures.regions_fixture import regions_choice
+from fixtures.regions_fixture import regions_choice, regions
 from fixtures.subjects_attrs import (subjects_attr_names,
                                      subjects_attr_placeholders)
 from users.models import Account
+from django.core.exceptions import ValidationError
 
 
 class SignUpForm(forms.ModelForm):
@@ -65,6 +66,15 @@ class SubjectsSelectionForm(forms.Form):
         for field in initial:
             self.fields[field].initial = initial[field]
         print(self.fields['region'].initial)
+
+    def is_valid(self):
+        if self.max_distance < 0:
+            raise ValidationError('Расстояние должно быть больше нуля')
+        if self.region not in regions:
+            raise ValidationError('Введите существующий регион')
+        for name in subjects_attr_names:
+            if 0 <= self.fields[name] <= 100:
+                raise ValidationError('Введите корректные баллы за экзамены')
 
     region = forms.ChoiceField(choices=regions_choice)
     region.initial = 'Выберите регион...'

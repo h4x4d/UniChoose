@@ -13,6 +13,13 @@
                 кафедр: {{ disliked_dpts_count }}</h6>
             <a type='button' class='btn btn-primary'
                href="{% url 'auth:profile_edit' %}">Изменить профиль</a>
+            <a type='button' onclick="confirmRecDelete()" class='btn btn-primary mt-2'
+               href="{% url 'auth:delete_dpts' %}">Удалить понравившиеся</a>
         </div>
     </div>
+    <script>
+        function confirmRecDelete() {
+            confirm('Вы уверены?');
+        }
+    </script>
 {% endblock content %}
