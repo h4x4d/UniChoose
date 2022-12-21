@@ -29,5 +29,5 @@ urlpatterns = [
     path('signup/', SignUpFormView.as_view(), name='signup'),
     path('profile/', ProfileView.as_view(), name='profile'),
     path('profile/edit/', EditProfileView.as_view(), name='profile_edit'),
-    path('edit_info/', SelectSubjectsView.as_view(), name='edit_info'),
+    path('profile/exam_info/', SelectSubjectsView.as_view(), name='edit_info'),
 ]

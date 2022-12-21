@@ -1,12 +1,14 @@
 from django.contrib.auth import login
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from django.views.generic import FormView, View
 
 from fixtures.regions_fixture import regions
 from users.forms import EditProfileForm, SignUpForm, SubjectsSelectionForm
-from users.models import Account
+from users.models import Account, Subject
+from universities.models import Region
+from fixtures.subjects_attrs import subjects_attr_names
 
 # ! These are not finished probably
 
@@ -44,19 +46,6 @@ class EditProfileView(LoginRequiredMixin, FormView):
     success_url = reverse_lazy('auth:profile')
     form_class = EditProfileForm
 
-    def get_context_data(self, **kwargs):
-        context = super(EditProfileView, self).get_context_data(**kwargs)
-
-        subject_form = SubjectsSelectionForm()
-
-        context['regions'] = regions
-        context['subject_form'] = subject_form
-
-        return context
-
-    def post(self, request):
-        pass
-
     def get_form_kwargs(self):
         kwargs = super().get_form_kwargs()
         kwargs.update({'instance': self.request.user})
@@ -71,7 +60,21 @@ class SelectSubjectsView(View):
         if request.user.is_authenticated:
             self.success_url = reverse_lazy('auth:profile')
 
-        form = SubjectsSelectionForm()
+        subject_form_initial = {
+            'region': request.user.region.name,
+            'max_distance': request.user.max_distance,
+        }
+
+        for name in subjects_attr_names:
+            try:
+                subject_form_initial[name] = Subject.objects.get(
+                    account_id=request.user.id,
+                    name=name,
+                ).mark
+            except Exception:
+                pass
+
+        form = SubjectsSelectionForm(initial=subject_form_initial)
 
         context = {
             'form': form,
@@ -81,6 +84,28 @@ class SelectSubjectsView(View):
         return render(request, self.template_name, context)
 
     def post(self, request):
-        if request.user.is_authenticated:
-            request.user.update(region__name=request)
-            request.user.save()
+        account = Account.objects.filter(id=request.user.id)
+        account.update(max_distance=request.POST.get('max_distance'))
+
+        try:
+            account.update(region=Region.objects.get(
+                name=request.POST.get('region')))
+        except Exception:
+            pass
+
+        inputted_marks = {}
+        for name in subjects_attr_names:
+            if request.POST.get(name) != '':
+                inputted_marks[name] = request.POST.get(name)
+
+        for key in inputted_marks:
+            Subject.objects.update_or_create(
+                account_id=request.user.id,
+                name=key,
+                defaults={
+                    'account': request.user,
+                    'name': key,
+                    'mark': inputted_marks[key],
+                })
+
+        return redirect('auth:profile')

@@ -13,7 +13,7 @@
             <button class="btn btn-primary menu-btn"><a class="links-hidden" href={% url 'auth:profile' %}>Моя информация</a></button>
             <div class="menu-content">
                 <a class="links-hidden" href="{% url 'departments:liked_dpts' %}">Понравившиеся</a>
-                <a class="links-hidden" href="{% url 'auth:profile_edit' %}">Изменить баллы</a>
+                <a class="links-hidden" href="{% url 'auth:edit_info' %}">Изменить баллы</a>
                 <a class="links-hidden" href="{% url 'auth:password_change' %}">Сменить пароль</a>
                 <a class="links-hidden" href="{% url 'auth:logout' %}">Выход</a>
             </div>
@@ -39,7 +39,7 @@
       {% if user.is_authenticated %}
         <li class="nav-item d-flex align-items- center"><a class="nav-link" href={% url 'auth:profile' %}>Моя информация</a></li>
         <li class="nav-item d-flex align-items-center"><a class="nav-link" href="{% url 'departments:liked_dpts' %}">Понравившиеся</a></li>
-        <li class="nav-item d-flex align-items-center"><a class="nav-link" href="{% url 'auth:profile_edit' %}">Изменить баллы</a></li>
+        <li class="nav-item d-flex align-items-center"><a class="nav-link" href="{% url 'auth:edit_info' %}">Изменить баллы</a></li>
         <li class="nav-item d-flex align-items-center"><a class="nav-link" href="{% url 'auth:password_change' %}">Сменить пароль</a></li>
         <li class="nav-item d-flex align-items-center"><a class="nav-link" href="{% url 'auth:logout' %}">Выход</a></li>
       {% else %}

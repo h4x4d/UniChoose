@@ -2,11 +2,13 @@ import haversine as hs
 from django.core.validators import MaxValueValidator
 from django.db import models
 from haversine import Unit
-
+from universities.validators import validate_region
 from core.models import CoreNameModel
 
 
-class Region(CoreNameModel):
+class Region(models.Model):
+    name = models.CharField(verbose_name='name', max_length=200,
+                            validators=[validate_region])
     latitude = models.FloatField()
     longitude = models.FloatField()
 

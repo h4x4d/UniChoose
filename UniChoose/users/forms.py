@@ -49,7 +49,7 @@ class EditProfileForm(UserChangeForm):
 
 class SubjectsSelectionForm(forms.Form):
 
-    def __init__(self):
+    def __init__(self, **kwargs):
         super().__init__()
 
         for name, placeholder in zip(subjects_attr_names,
@@ -59,6 +59,12 @@ class SubjectsSelectionForm(forms.Form):
                 validators=[MinValueValidator(0),
                             MaxValueValidator(100)],
                 required=False)
+
+        initial = kwargs['initial']
+        print(self.fields['region'].initial)
+        for field in initial:
+            self.fields[field].initial = initial[field]
+        print(self.fields['region'].initial)
 
     region = forms.ChoiceField(choices=regions_choice)
     region.initial = 'Выберите регион...'
