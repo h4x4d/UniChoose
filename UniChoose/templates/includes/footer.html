@@ -5,7 +5,6 @@
       {% with request.resolver_match.view_name as view_name %}
       <li class="nav-item"><a href="{% url 'homepage:home' %}" class="nav-link px-2{% if view_name == 'homepage:home'%} disabled{% endif %}">Главная</a></li>
       <li class="nav-item"><a href="{% url 'aboutpage:about' %}" class="nav-link px-2{% if view_name == 'about:description' %} disabled{% endif %}">Что это?</a></li>
-      <li class="nav-item"><a href="#" class="nav-link px-2">Конфиденциальность</a></li>
       {% endwith %}
     </ul>
   </footer>
