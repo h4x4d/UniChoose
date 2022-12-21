@@ -374,3 +374,11 @@ input::placeholder{
 .card[data-status="active"]{
     display: flex;
 }
+
+.alert-danger{
+    z-index: 2;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    top: 15%;
+}
