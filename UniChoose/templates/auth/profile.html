@@ -5,9 +5,9 @@
             <h5 class="display-5"> Ваша информация</h5>
             <h6 class="disply-7"> Имя пользователя: {{ username }}</h6>
             <h6 class="disply-7"> Понравившихся
-                университетов: {{ liked_unis_count }}</h6>
-            <h6 class="disply-7"> Понравившихся
                 кафедр: {{ liked_dpts_count }}</h6>
+            <h6 class="disply-7"> Отвергнутых
+                кафедр: {{ disliked_dpts_count }}</h6>
             <a type='button' class='btn btn-primary'
                href="{% url 'auth:profile_edit' %}">Изменить профиль</a>
         </div>

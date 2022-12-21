@@ -28,9 +28,12 @@ class ProfileView(LoginRequiredMixin, View):
 
     def get(self, request):
         context = {
-            'username': request.user.username,
-            'liked_unis_count': request.user.liked_unis.all().count(),
-            'liked_dpts_count': request.user.liked_dpts.all().count(),
+            'username':
+            request.user.username,
+            'disliked_dpts_count':
+            request.user.relations.filter(strength=-1).count(),
+            'liked_dpts_count':
+            request.user.relations.filter(strength=1).count(),
         }
 
         return render(request, self.template_name, context=context)
