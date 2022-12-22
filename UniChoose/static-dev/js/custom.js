@@ -23,3 +23,11 @@ email_input = document.getElementById("id_email")
 if (email_input){
   email_input.placeholder = "Адрес электронной почты"
 }
+password1 = document.getElementById("id_password1")
+if (password1){
+  password1.placeholder = "Пароль"
+}
+password2 = document.getElementById("id_password2")
+if (password2){
+  password2.placeholder = "Подтверждение пароля"
+}

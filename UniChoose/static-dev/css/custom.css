@@ -269,6 +269,9 @@ input::placeholder{
 #hint_id_new_password1{
     display: none;
 }
+#hint_id_username{
+    display: none;      
+}
 .flex-direction-column{
     flex-direction: column;
 }

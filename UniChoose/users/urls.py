@@ -27,7 +27,10 @@ urlpatterns = [
          PasswordChangeDoneView.as_view(
              template_name='auth/password_change_done.html'),
          name='password_change_done'),
-    path('signup/', SignUpFormView.as_view(), name='signup'),
+    path('signup/',
+         SignUpFormView.as_view(
+             success_url=reverse_lazy('auth:edit_info')),
+         name='signup'),
     path('profile/', ProfileView.as_view(), name='profile'),
     path('profile/edit/', EditProfileView.as_view(), name='profile_edit'),
     path('profile/exam_info/', SelectSubjectsView.as_view(), name='edit_info'),

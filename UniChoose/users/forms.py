@@ -11,9 +11,7 @@ from users.validators import (validate_distance, validate_region,
 
 
 class SignUpForm(forms.ModelForm):
-    password1 = forms.CharField(label='Пароль', widget=forms.PasswordInput)
-    password2 = forms.CharField(label='Подтверждение пароля',
-                                widget=forms.PasswordInput)
+    password = forms.CharField(label='Пароль', widget=forms.PasswordInput)
 
     class Meta:
         model = Account
