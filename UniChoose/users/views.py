@@ -107,5 +107,13 @@ def delete_liked_departments(request):
 
 
 def delete_recommendation_profile(request):
-    # ? which model should i delete
-    pass
+    account = Account.objects.get(id=request.user.id)
+
+    account.preference.entry_score = 310
+    account.preference.vuz_rating = 10.0
+    account.preference.edu_level = 0
+    account.preference.profile = 0
+
+    account.preference.save()
+
+    return redirect('auth:profile')
