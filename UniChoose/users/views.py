@@ -100,8 +100,6 @@ class SelectSubjectsView(FormView):
 
         return redirect('auth:edit_info')
 
-    # ! might need to be rewritten to show form errors to user
-
 
 def delete_liked_departments(request):
     AccountDepartmentRelations.objects.filter(
