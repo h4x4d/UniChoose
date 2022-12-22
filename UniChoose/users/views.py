@@ -65,7 +65,10 @@ class SelectSubjectsView(FormView):
             kwargs['initial'][subjects_convert[subject.name]] = subject.mark
 
         kwargs.update({'instance': self.request.user})
-        kwargs.update({'region_value': self.request.user.region.name})
+        try:
+            kwargs.update({'region_value': self.request.user.region.name})
+        except AttributeError:
+            pass
 
         return kwargs
 
