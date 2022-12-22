@@ -8,7 +8,8 @@
             <h5 class='display-5'>Изменить баллы</h5>
             <form method="POST">
                 {% load crispy_forms_tags %}
-                {% if form.error %}
+                {{ form.non_field_errors }}
+                {% if form.errors %}
                     123
                     {% for field in form %}
                         {% for error in field.errors %}
