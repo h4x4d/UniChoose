@@ -65,7 +65,10 @@ class SelectSubjectsView(FormView):
             kwargs['initial'][subjects_convert[subject.name]] = subject.mark
 
         kwargs.update({'instance': self.request.user})
-        kwargs.update({'region_value': self.request.user.region.name})
+        try:
+            kwargs.update({'region_value': self.request.user.region.name})
+        except AttributeError:
+            pass
 
         return kwargs
 
@@ -88,7 +91,7 @@ class SelectSubjectsView(FormView):
         for key in inputted_marks:
             Subject.objects.update_or_create(
                 account_id=request.user.id,
-                name=key,
+                name=reversed_subjects_convert[key],
                 defaults={
                     'account': request.user,
                     'name': reversed_subjects_convert[key],

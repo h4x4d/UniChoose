@@ -51,8 +51,9 @@ class SubjectsSelectionForm(forms.Form):
 
     def __init__(self, **kwargs):
         super().__init__()
-
-        self.fields['region'].widget.attrs['value'] = kwargs['region_value']
+        if 'region_value' in kwargs:
+            self.fields['region'].widget.attrs['value'] = kwargs[
+                'region_value']
 
         for name, placeholder in zip(subjects_attr_names,
                                      subjects_attr_placeholders):
