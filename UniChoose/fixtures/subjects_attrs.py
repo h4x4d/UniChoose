@@ -26,3 +26,8 @@ subjects_attr_placeholders = [
     'История',
     'Доп. баллы',
 ]
+subjects_convert = {
+    subjects_attr_placeholders[i]: subjects_attr_names[i]
+    for i in range(len(subjects_attr_names))
+}
+reversed_subjects_convert = {subjects_convert[i]: i for i in subjects_convert}

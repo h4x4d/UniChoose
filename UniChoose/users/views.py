@@ -1,15 +1,14 @@
 from django.contrib.auth import login
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.shortcuts import render, redirect
+from django.shortcuts import redirect, render
 from django.urls import reverse_lazy
 from django.views.generic import FormView, View
 
-from fixtures.regions_fixture import regions
-from users.forms import EditProfileForm, SignUpForm, SubjectsSelectionForm
-from users.models import Account, Subject, AccountDepartmentRelations
+from fixtures.subjects_attrs import (reversed_subjects_convert,
+                                     subjects_attr_names, subjects_convert)
 from universities.models import Region
-from fixtures.subjects_attrs import subjects_attr_names
-from django.core.exceptions import ValidationError
+from users.forms import EditProfileForm, SignUpForm, SubjectsSelectionForm
+from users.models import Account, AccountDepartmentRelations, Subject
 
 # ! These are not finished probably
 
@@ -58,18 +57,17 @@ class SelectSubjectsView(FormView):
     success_url = reverse_lazy('auth:login')
     form_class = SubjectsSelectionForm
 
-    def get(self, request):
-        if request.user.is_authenticated:
-            self.success_url = reverse_lazy('auth:profile')
+    def get_form_kwargs(self):
+        kwargs = super().get_form_kwargs()
+        kwargs['initial']['max_distance'] = self.request.user.max_distance
 
-        form = self.get_form(request)
+        for subject in self.request.user.subjects.all():
+            kwargs['initial'][subjects_convert[subject.name]] = subject.mark
 
-        context = {
-            'form': form,
-            'regions': regions,
-        }
+        kwargs.update({'instance': self.request.user})
+        kwargs.update({'region_value': self.request.user.region.name})
 
-        return render(request, self.template_name, context)
+        return kwargs
 
     def post(self, request):
         if self.form_valid(request):
@@ -82,54 +80,24 @@ class SelectSubjectsView(FormView):
             except Exception:
                 pass
 
-            inputted_marks = {}
-            for name in subjects_attr_names:
-                if request.POST.get(name) != '':
-                    inputted_marks[name] = request.POST.get(name)
-
-            for key in inputted_marks:
-                Subject.objects.update_or_create(
-                    account_id=request.user.id,
-                    name=key,
-                    defaults={
-                        'account': request.user,
-                        'name': key,
-                        'mark': inputted_marks[key],
-                    })
-
-            return redirect('auth:profile')
-
-    def get_form(self, request):
-        form = super().get_form(super().get_form_class())
-
-        subject_form_initial = {
-            'region': request.user.region.name,
-            'max_distance': request.user.max_distance,
-        }
-
+        inputted_marks = {}
         for name in subjects_attr_names:
-            try:
-                subject_form_initial[name] = Subject.objects.get(
-                    account_id=request.user.id,
-                    name=name,
-                ).mark
-            except Exception:
-                pass
+            if request.POST.get(name) != '':
+                inputted_marks[name] = request.POST.get(name)
 
-        form = SubjectsSelectionForm(initial=subject_form_initial)
+        for key in inputted_marks:
+            Subject.objects.update_or_create(
+                account_id=request.user.id,
+                name=key,
+                defaults={
+                    'account': request.user,
+                    'name': reversed_subjects_convert[key],
+                    'mark': inputted_marks[key],
+                })
 
-        return form
+            return redirect('auth:edit_info')
 
     # ! might need to be rewritten to show form errors to user
-    def form_valid(self, request):
-        if int(request.POST.get('max_distance')) < 0:
-            raise ValidationError('Расстояние должно быть больше нуля')
-        if request.POST.get('region') not in regions:
-            raise ValidationError('Введите существующий регион')
-        for name in subjects_attr_names:
-            if 0 <= int(request.POST.get(name)) <= 100:
-                raise ValidationError('Введите корректные баллы за экзамены')
-        return True
 
 
 def delete_liked_departments(request):
