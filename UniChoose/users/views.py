@@ -88,14 +88,14 @@ class SelectSubjectsView(FormView):
         for key in inputted_marks:
             Subject.objects.update_or_create(
                 account_id=request.user.id,
-                name=key,
+                name=reversed_subjects_convert[key],
                 defaults={
                     'account': request.user,
                     'name': reversed_subjects_convert[key],
                     'mark': inputted_marks[key],
                 })
 
-            return redirect('auth:edit_info')
+        return redirect('auth:edit_info')
 
     # ! might need to be rewritten to show form errors to user
 
