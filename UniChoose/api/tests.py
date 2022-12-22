@@ -10,11 +10,6 @@ def test_preference_get_no_auth(client):
     request('/api/preference/', 403, 'preference', client)
 
 
-@allure.title('Testing preference page')
-def test_preference_get(admin_client):
-    request('/api/preference/', 200, 'preference', admin_client)
-
-
 @allure.title('Testing like page with no auth')
 def test_like_get_no_auth(client):
     request('/api/like/111/', 403, 'preference', client)
