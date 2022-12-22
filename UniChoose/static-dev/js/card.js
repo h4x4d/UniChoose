@@ -112,7 +112,6 @@ class Card {
         e.preventDefault();
         if (!this.startPoint) return;
         const {clientX, clientY} = e;
-        console.log(clientX)
         this.handleMove(clientX, clientY);
     }
 
@@ -138,6 +137,12 @@ class Card {
     }
 
     dismiss = (direction) => {
+        if (typeof this.onLike === 'function' && direction === 1) {
+            this.onLike(this.department.id);
+        }
+        if (typeof this.onDislike === 'function' && direction === -1) {
+            this.onDislike(this.department.id);
+        }
         this.startPoint = null;
         document.removeEventListener('mouseup', this.#handleMoveUp);
         document.removeEventListener('mousemove', this.#handleMouseMove);
@@ -151,12 +156,6 @@ class Card {
         }, 1000);
         if (typeof this.onDismiss === 'function') {
             this.onDismiss();
-        }
-        if (typeof this.onLike === 'function' && direction === 1) {
-            this.onLike(this.department.id);
-        }
-        if (typeof this.onDislike === 'function' && direction === -1) {
-            this.onDislike(this.department.id);
         }
     }
 }

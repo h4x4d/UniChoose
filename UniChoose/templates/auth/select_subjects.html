@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% block title %}
+    Выбор предметов | UniChoose
+{% endblock %}
+{% block content %}
+    <div class="container d-flex align-items-center justify-content-center">
+        <div class="parent-form-holder-signup">
+            <h5 class='display-5'>Изменить баллы</h5>
+            <form method="POST">
+                {% load crispy_forms_tags %}
+                {% if form.errors %}
+                    {% for field in form %}
+                        {% for error in field.errors %}
+                            <div class="alert alert-danger">
+                                <strong>{{ error|escape }}</strong>
+                            </div>
+                        {% endfor %}
+                    {% endfor %}
+                    {% for error in form.non_field_errors %}
+                        <div class="alert alert-danger">
+                            <strong>{{ error|escape }}</strong>
+                        </div>
+                    {% endfor %}
+                {% endif %}
+                {% csrf_token %}
+                <div class='row signup-form-holder'>
+                    {% for field in form %}
+                        {% if field.name == 'region' %}
+                            <div class='col-9'>
+                                {{ field|as_crispy_field }}
+                            </div>
+                        {% elif field.name == 'max_distance' %}
+                            <div class='col-3'>
+                                {{ field|as_crispy_field }}
+                            </div>
+                        {% else %}
+                            <div class='col-md-2'>
+                                {{ field|as_crispy_field }}
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+                <div class="form-btn-holder d-flex justify-content-center mt-2">
+                    <button type="submit" class="btn btn-primary">Готово!
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}

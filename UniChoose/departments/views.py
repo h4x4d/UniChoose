@@ -1,3 +1,4 @@
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render
 from django.views.generic import ListView
 
@@ -6,7 +7,7 @@ from users.models import Account
 # TODO: rewrite view according to Alexey templates
 
 
-class LikedDepartments(ListView):
+class LikedDepartments(LoginRequiredMixin, ListView):
     # ! Haven't tested this view yet
 
     template_name = 'departments/index.html'

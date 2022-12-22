@@ -9,20 +9,20 @@
       <li class="nav-item d-flex align-items-center"><a href="{% url 'homepage:home' %}" class="{% if view_name == 'homepage:home' %}nav-link active disabled{% else %} nav-link {% endif %}">Главная</a></li>
       <li class="nav-item d-flex align-items-center"><a href="{% url 'aboutpage:about' %}" class="{% if view_name == 'aboutpage:about' %}nav-link active disabled{% else %} nav-link {% endif %}">Что это?</a></li>
       {% if user.is_authenticated %}
-        <div class="dropdown-menu">
-            <button class="btn btn-primary menu-btn"><a class="links-hidden" href={% url 'auth:profile' %}>Моя информация</a></button>
+        <li class="dropdown-menu">
+            <div class="btn btn-primary menu-btn"><a class="links-hidden" href={% url 'auth:profile' %}>Моя информация</a></div>
             <div class="menu-content">
                 <a class="links-hidden" href="{% url 'departments:liked_dpts' %}">Понравившиеся</a>
-                <a class="links-hidden" href="{% url 'auth:profile_edit' %}">Изменить баллы</a>
+                <a class="links-hidden" href="{% url 'auth:edit_info' %}">Изменить баллы</a>
                 <a class="links-hidden" href="{% url 'auth:password_change' %}">Сменить пароль</a>
                 <a class="links-hidden" href="{% url 'auth:logout' %}">Выход</a>
             </div>
-        </div>
+          </li>
       {% else %}
         <li class="nav-item d-flex align-items-center"><a type='button' href="{% url 'auth:signup' %}" class="{% if view_name == 'users:signup' %}nav-link active disabled{% else %} btn btn-primary  {% endif %}">Регистрация</a></li>
         <li class="nav-item d-flex align-items-center"><a type='button' href="{% url 'auth:login' %}" class="{% if view_name == 'users:login' %}nav-link active disabled{% else %} btn btn-outline-dark me-2 {% endif %}">Вход</a></li>
       {% endif %}
-  </ul>
+      </ul>
   {% endwith %}
   </header>
   <header class="header-mobile">
@@ -31,21 +31,21 @@
     </a>
     <input type="checkbox" id="NavToggle">
     <label for="NavToggle" class="nav-toggle-btn">
-      <img class="bi me-2" width="40" height="40" src="{% static 'media/menu-icon.svg' %}">
+      <img class="bi me-2" width="40" height="40" src="{% static 'media/menu-icon.svg' %}" alt="Unichoose">
     </label>
-    <nav class="mobile-nav">
+    <ul class="mobile-nav">
       <li class="nav-item d-flex align-items-center"><a href="{% url 'homepage:home' %}" class="{% if view_name == 'homepage:home' %}nav-link active disabled{% else %} nav-link {% endif %}">Главная</a></li>
       <li class="nav-item d-flex align-items-center"><a href="{% url 'aboutpage:about' %}" class="{% if view_name == 'aboutpage:about' %}nav-link active disabled{% else %} nav-link {% endif %}">Что это?</a></li>
       {% if user.is_authenticated %}
         <li class="nav-item d-flex align-items- center"><a class="nav-link" href={% url 'auth:profile' %}>Моя информация</a></li>
         <li class="nav-item d-flex align-items-center"><a class="nav-link" href="{% url 'departments:liked_dpts' %}">Понравившиеся</a></li>
-        <li class="nav-item d-flex align-items-center"><a class="nav-link" href="{% url 'auth:profile_edit' %}">Изменить баллы</a></li>
+        <li class="nav-item d-flex align-items-center"><a class="nav-link" href="{% url 'auth:edit_info' %}">Изменить баллы</a></li>
         <li class="nav-item d-flex align-items-center"><a class="nav-link" href="{% url 'auth:password_change' %}">Сменить пароль</a></li>
         <li class="nav-item d-flex align-items-center"><a class="nav-link" href="{% url 'auth:logout' %}">Выход</a></li>
       {% else %}
         <li class="nav-item d-flex align-items-center"><a href="{% url 'auth:signup' %}" class="{% if view_name == 'users:signup' %}nav-link active disabled{% else %} nav-link {% endif %}">Регистрация</a></li>
         <li class="nav-item d-flex align-items-center"><a href="{% url 'auth:login' %}" class="{% if view_name == 'users:login' %}nav-link active disabled{% else %} nav-link {% endif %}">Вход</a></li>
       {% endif %}
-    </nav>
+    </ul>
   </header>
 </div>  

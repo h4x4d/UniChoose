@@ -1,5 +1,8 @@
 {% extends 'base.html' %}
 {% load static %}
+{% block title %}
+    UniChoose | Главная страница
+{% endblock %}
 {% block head %}
     <link rel="stylesheet" href="{% static 'css/card-styles.css' %}">
 {% endblock %}
@@ -16,16 +19,17 @@
             </div>
             <div class="row align-items-center justify-content-center">
 
-                <div class="col-2 d-flex justify-content-center">
+                <div class="col-md-2 col-4 d-flex justify-content-center">
                     <ion-icon id="dislike" onclick="dislike_button()"
                               name="heart-dislike-outline"></ion-icon>
 
                 </div>
-                <div class="col-2 d-flex justify-content-center">
+                <div class="col-md-2 col-4 d-flex justify-content-center">
                     <ion-icon id="like" onclick="like_button()" name="heart-outline">
                     </ion-icon>
                 </div>
             </div>
+        </div>
 
 
             <script src="{% static 'js/buttons.js' %}"></script>
@@ -44,14 +48,14 @@
                         множество специальностей разных ВУЗов, интересных
                         именно тебе.</h3>
                     <div class="row">
-                        <a href="#}" class="btn btn-primary"
+                        <a href="/auth/signup/" class="btn btn-primary"
                            aria-current="page">Регистрация</a>
-                        <a href="#" class="btn btn-outline-dark"
+                        <a href="/auth/login/" class="btn btn-outline-dark"
                            aria-current="page">Вход</a>
                     </div>
                     <br><br>
                 </div>
-                <div class="col">
+                <div class="col d-none d-md-block">
                     <img src="{% static 'media/home.svg' %}"
                          alt="здесь должна была быть картинка">
                 </div>

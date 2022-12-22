@@ -4,11 +4,11 @@ from departments.models import WeightedDepartment
 
 
 def create_weighted_vector(data):
-    return (float(data.entry_score) * 10, float(data.profile) * (10**-5),
-            float(data.vuz_rating), float(data.edu_level) * 10)
+    return (float(data.entry_score) * 10, float(data.profile) * (10**-3),
+            float(data.vuz_rating), float(data.edu_level) * 100)
 
 
-def nearest_filter(departments, user, amount=2):
+def nearest_filter(departments, user, amount=1):
     u = AnnoyIndex(4, 'angular')
     preference = user.preference
 
@@ -19,4 +19,5 @@ def nearest_filter(departments, user, amount=2):
 
     u.build(10)
 
-    return u.get_nns_by_vector(create_weighted_vector(preference), amount)
+    vector = create_weighted_vector(preference)
+    return u.get_nns_by_vector(vector, amount)

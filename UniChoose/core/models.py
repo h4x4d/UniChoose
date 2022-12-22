@@ -19,7 +19,7 @@ class WeightedModel(models.Model):
         blank=True,
         null=True,
     )
-    edu_level = models.IntegerField(blank=True, null=True)
+    edu_level = models.SmallIntegerField(blank=True, null=True)
     profile = models.IntegerField(blank=True, null=True)
 
     class Meta:

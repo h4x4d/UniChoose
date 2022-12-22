@@ -1,10 +1,14 @@
 import json
 
+from fixtures.addresses_ids import get_address_ids
+
 levels_int = {
     'Бакалавриат': 0,
     'Специалитет': 1,
     'Магистратура': 2,
 }
+
+regions = get_address_ids()
 
 
 def main(source_file, fixture_file):
@@ -25,7 +29,7 @@ def main(source_file, fixture_file):
                 'description': university['description'],
                 'avg_rating': university['rating'][0],
                 'rating_count': university['rating'][1],
-                'region': university['region'],
+                'region': regions[university['region']],
             },
         })
 
@@ -34,6 +38,14 @@ def main(source_file, fixture_file):
                 if department['pass_mark'] == 'Нет' or \
                    department['pass_mark'] == 'БВИ':
                     department['pass_mark'] = 0
+
+                for j, i in enumerate(department['ege_subjects']):
+                    if 'или' in i:
+                        department['ege_subjects'][j] = i.split('  или ')
+                    try:
+                        department['ege_subjects'].remove('Внутренний экзамен')
+                    except ValueError:
+                        pass
 
                 fixture.append({
                     'pk': department_pk,
@@ -49,8 +61,7 @@ def main(source_file, fixture_file):
                     },
                 })
                 department_pk += 1
-
-        json.dump(fixture,
+        """json.dump(fixture,
                   open(
                       f'initial_fixtures/{fixture_file}_'
                       f'{university_pk}.json',
@@ -58,9 +69,15 @@ def main(source_file, fixture_file):
                       encoding='utf-8'),
                   ensure_ascii=False,
                   indent=4)
-        fixture = []
+        fixture = []"""
 
         university_pk += 1
+
+    json.dump(fixture,
+              open('fixture.json', 'w', encoding='utf-8'),
+              ensure_ascii=False,
+              indent=4)
+    fixture = []
 
 
 if __name__ == '__main__':

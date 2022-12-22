@@ -12,7 +12,7 @@
         <div class="dep-card-main-exams">
             <p>Экзамены:</p>
             {% for exam in dep.ege_subjects %}
-            {% if exam|length == 2 or exam|length == 3 %}
+            {% if exam|length == 2 %}
                 {% for subexam in exam %}
                 {{subexam}}
                 {% if not forloop.last %} или {% endif %}

@@ -4,9 +4,13 @@ from django.db import models
 from haversine import Unit
 
 from core.models import CoreNameModel
+from universities.validators import validate_region
 
 
-class Region(CoreNameModel):
+class Region(models.Model):
+    name = models.CharField(verbose_name='name',
+                            max_length=200,
+                            validators=[validate_region])
     latitude = models.FloatField()
     longitude = models.FloatField()
 

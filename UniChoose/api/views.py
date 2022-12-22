@@ -1,8 +1,10 @@
+from django.core.exceptions import ObjectDoesNotExist
+from django.db.models import Prefetch
 from rest_framework import viewsets
+from rest_framework.exceptions import NotFound, PermissionDenied
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.views import APIView
-from django.db.models import Prefetch
 
 from api.filters.initial_filter import initial_filter
 from api.filters.nearest_filter import nearest_filter
@@ -13,7 +15,7 @@ from users.models import AccountDepartmentRelations, Preference
 
 class DepartmentViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = Department.objects.all().order_by('name'). \
-        prefetch_related(Prefetch('university',  to_attr='universities'))
+        prefetch_related(Prefetch('university', to_attr='universities'))
     serializer_class = DepartmentSerializer
 
     permission_classes = [IsAuthenticated]
@@ -44,7 +46,13 @@ class PreferenceViewSet(viewsets.ReadOnlyModelViewSet):
             user.preference = preference
             user.save()
 
-            departments = departments[:2]
+            departments = [departments[0].id]
+
+        for department in departments:
+            relation = AccountDepartmentRelations(account_id=user.id,
+                                                  department_id=department,
+                                                  strength=0)
+            relation.save()
 
         return Department.objects.filter(pk__in=departments)
 
@@ -54,16 +62,29 @@ class APILike(APIView):
 
     def get(self, request, pk, format=None):
         user = request.user
-        department = Department.objects.get(pk=pk)
+        try:
+            department = Department.objects.get(pk=pk)
+        except ObjectDoesNotExist:
+            raise NotFound()
 
-        relation = AccountDepartmentRelations()
-        relation.account = user
-        relation.department = department
+        try:
+            relation = AccountDepartmentRelations.objects.get(
+                account=user, department=department)
+        except ObjectDoesNotExist:
+            raise PermissionDenied()
+
         relation.strength = 1
         relation.save()
 
         preference = user.preference
+
+        if not preference:
+            raise PermissionDenied()
+
         weighted = department.weighted
+
+        if not weighted:
+            raise NotFound()
 
         if preference.vuz_rating == 10.0:
             preference.vuz_rating = weighted.vuz_rating
@@ -90,11 +111,21 @@ class APIDislike(APIView):
 
     def get(self, request, pk, format=None):
         user = request.user
-        department = Department.objects.get(pk=pk)
 
-        relation = AccountDepartmentRelations()
-        relation.account = user
-        relation.department = department
+        try:
+            department = Department.objects.get(pk=pk)
+        except ObjectDoesNotExist:
+            raise NotFound()
+
+        if not user.preference:
+            raise PermissionDenied()
+
+        try:
+            relation = AccountDepartmentRelations.objects.get(
+                account=user, department=department)
+        except ObjectDoesNotExist:
+            raise PermissionDenied()
+
         relation.strength = -1
         relation.save()
 

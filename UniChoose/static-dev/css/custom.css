@@ -257,7 +257,7 @@ input::placeholder{
     display: flex;
     align-items: center;
     justify-content: center;
-    min-width:500px;
+    min-width: 500px;
 }
 .form-btn-holder{
     margin-left: -5px;
@@ -269,18 +269,42 @@ input::placeholder{
 #hint_id_new_password1{
     display: none;
 }
+#hint_id_username{
+    display: none;      
+}
 .flex-direction-column{
     flex-direction: column;
 }
-
-/* mobile stuff */
-
+/* signup form */
+.parent-form-holder-signup{
+    text-align: center;
+}
+#exampleDataList{
+    margin-right:0;
+    margin-left:0;
+}
+.signup-form-holder > div{
+    margin-top: 5px;
+    padding-left: calc(var(--bs-gutter-x) * .25);
+    padding-right: calc(var(--bs-gutter-x) * .25);
+}
+.signup-form-holder > div > .mb-3{
+    margin-bottom: 0 !important;
+}
+.signup-form-holder{
+    margin-left: -7px !important;
+    margin-right: -7px !important;
+}
+/* mobile */
 @media screen and (max-width: 980px) {
     .header-desktop{
         display: none !important;
     }
     .header-mobile{
         display: flex;
+    }
+    .dep-card{
+        width: 96.5%
     }
 }
 @media screen and (min-width: 981px) {
@@ -289,6 +313,9 @@ input::placeholder{
     }
     .header-mobile{
         display: none !important;
+    }
+    .dep-card{
+        width: 600px;
     }
 }
 .header-mobile{
@@ -349,4 +376,12 @@ input::placeholder{
 }
 .card[data-status="active"]{
     display: flex;
+}
+
+.alert-danger{
+    z-index: 2;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    top: 15%;
 }
