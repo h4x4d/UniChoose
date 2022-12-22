@@ -62,10 +62,8 @@ class SubjectsSelectionForm(forms.Form):
                 required=False)
 
         initial = kwargs['initial']
-        print(self.fields['region'].initial)
         for field in initial:
             self.fields[field].initial = initial[field]
-        print(self.fields['region'].initial)
 
     def is_valid(self):
         if self.max_distance < 0:
