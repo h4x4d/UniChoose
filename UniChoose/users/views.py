@@ -7,7 +7,7 @@ from django.views.generic import FormView, View
 from fixtures.subjects_attrs import (reversed_subjects_convert,
                                      subjects_attr_names, subjects_convert)
 from universities.models import Region
-from users.forms import EditProfileForm, SignupForm, SubjectsSelectionForm
+from users.forms import EditProfileForm, SignUpForm, SubjectsSelectionForm
 from users.models import Account, AccountDepartmentRelations, Subject
 
 # ! These are not finished probably
@@ -16,7 +16,7 @@ from users.models import Account, AccountDepartmentRelations, Subject
 class SignUpFormView(FormView):
     template_name = 'auth/signup.html'
     success_url = reverse_lazy('homepage:home')
-    form_class = SignupForm
+    form_class = SignUpForm
 
     def form_valid(self, form):
         user = Account.objects.create_user(**form.cleaned_data)
@@ -65,71 +65,42 @@ class SelectSubjectsView(FormView):
             kwargs['initial'][subjects_convert[subject.name]] = subject.mark
 
         kwargs.update({'instance': self.request.user})
-        kwargs.update({'region_value': self.request.user.region.name})
+        try:
+            kwargs.update({'region_value': self.request.user.region.name})
+        except AttributeError:
+            pass
 
         return kwargs
 
-    # def post(self, request):
-    #     if self.form_valid(request):
-    #         account = Account.objects.filter(id=request.user.id)
-    #         account.update(max_distance=request.POST.get('max_distance'))
+    def post(self, request):
+        if self.form_valid(request):
+            account = Account.objects.filter(id=request.user.id)
+            account.update(max_distance=request.POST.get('max_distance'))
 
-    #         try:
-    #             account.update(region=Region.objects.get(
-    #                 name=request.POST.get('region')))
-    #         except Exception:
-    #             pass
-
-    #     inputted_marks = {}
-    #     for name in subjects_attr_names:
-    #         if request.POST.get(name) != '':
-    #             inputted_marks[name] = request.POST.get(name)
-
-    #     for key in inputted_marks:
-    #         Subject.objects.update_or_create(
-    #             account_id=request.user.id,
-    #             name=key,
-    #             defaults={
-    #                 'account': request.user,
-    #                 'name': reversed_subjects_convert[key],
-    #                 'mark': inputted_marks[key],
-    #             })
-
-    #     return redirect('auth:edit_info')
-
-    # ! might need to be rewritten to show form errors to user
-
-    def form_valid(self, form):
-        form.clean()
-        account = Account.objects.filter(id=self.request.user.id)
-        account.update(max_distance=form.cleaned_data['max_distance'])
-
-        try:
-            account.update(region=Region.objects.get(
-                name=form.cleaned_data['region']))
-        except Exception:
-            pass
+            try:
+                account.update(region=Region.objects.get(
+                    name=request.POST.get('region')))
+            except Exception:
+                pass
 
         inputted_marks = {}
         for name in subjects_attr_names:
-            if form.cleaned_data[name] != '':
-                inputted_marks[name] = form.cleaned_data[name]
+            if request.POST.get(name) != '':
+                inputted_marks[name] = request.POST.get(name)
 
         for key in inputted_marks:
             Subject.objects.update_or_create(
-                account_id=self.request.user.id,
-                name=key,
+                account_id=request.user.id,
+                name=reversed_subjects_convert[key],
                 defaults={
-                    'account': self.request.user,
+                    'account': request.user,
                     'name': reversed_subjects_convert[key],
                     'mark': inputted_marks[key],
                 })
 
         return redirect('auth:edit_info')
 
-    def form_invalid(self, form):
-        form.clean()
-        return redirect('auth:edit_info')
+    # ! might need to be rewritten to show form errors to user
 
 
 def delete_liked_departments(request):

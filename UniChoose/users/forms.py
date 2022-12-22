@@ -1,5 +1,5 @@
 from django import forms
-from django.contrib.auth.forms import UserChangeForm, UserCreationForm
+from django.contrib.auth.forms import UserChangeForm
 from django.core.validators import MaxValueValidator, MinValueValidator
 
 from fixtures.regions_fixture import regions_choice
@@ -8,8 +8,6 @@ from fixtures.subjects_attrs import (subjects_attr_names,
 from users.models import Account
 from users.validators import (validate_distance, validate_region,
                               validate_subject)
-from django.core.exceptions import ValidationError
-from fixtures.regions_fixture import regions
 
 
 class SignUpForm(forms.ModelForm):
@@ -73,16 +71,6 @@ class SubjectsSelectionForm(forms.Form):
         for field in initial:
             self.fields[field].initial = initial[field]
 
-    def clean(self):
-        if self.fields['max_distance'].value < 0:
-            self.add_error('Расстояние должно быть больше нуля')
-        if self.fields['region'].value not in regions:
-            self.add_error('Введите существующий регион')
-        for name in subjects_attr_names:
-            if (0 <= self.fields[name].value <= 100 and
-                    self.fields[name].value != ''):
-                self.add_error('Введите корректные баллы за экзамены')
-
     region = forms.ChoiceField(choices=regions_choice,
                                validators=[validate_region])
     region.initial = 'Выберите регион...'
@@ -95,9 +83,3 @@ class SubjectsSelectionForm(forms.Form):
                                       max_value=10000,
                                       validators=[validate_distance])
     max_distance.widget.attrs = {'placeholder': 'Максимальное расстояние'}
-
-
-class SignupForm(UserCreationForm):
-    class Meta:
-        model = Account
-        fields = ['username', 'password1', 'password2']
