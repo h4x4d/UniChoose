@@ -96,7 +96,7 @@ make pip-install-dev
 
 ### 2.1 Adding access_key, for example:
 ```
-SECRET_KEY=AYDFHIJUOAIKPLDFFDbi[o]
+SECRET_KEY=AYDFHIJUOAIKPLDFFDbi
 ```
 ### 2.2 Checking debug status: 1 - on; 0 - off:
 ```
