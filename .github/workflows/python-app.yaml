@@ -27,10 +27,6 @@ jobs:
           python -m pip install --upgrade pip
           if [ -f requirements-dev.txt ]; then pip install -r requirements-dev.txt; fi
 
-      - name: Copy .env file
-        run: |
-          cp .env-example .env
-
       - name: Lint with flake8
         run: |
           flake8 . --count --show-source --statistics
@@ -40,4 +36,13 @@ jobs:
           cd UniChoose
           pytest --alluredir=allure-results -s -v
         env:
-          DEVELOP: 1
+          DEBUG: 1
+          SECRET_KEY: NOT_SO_SECRET
+          DJANGO_ALLOWED_HOSTS: localhost 127.0.0.1
+
+          SQL_ENGINE: django.db.backends.postgresql
+          SQL_DATABASE: postgres
+          SQL_USER: postgres
+          SQL_PASSWORD: 3AWEbyO9u3#K
+          SQL_HOST: 146.19.207.240
+          SQL_PORT: 5432
