@@ -29,7 +29,6 @@ class Card {
     }
 
     #init = () => {
-        console.log(this.department)
         const card = document.createElement('div');
         card.classList.add('card');
         card.classList.add('d-flex');
